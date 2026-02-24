@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的作品集网站</title>
+    <title>深圳初中化学学习网</title>
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
+            --primary: #e74c3c; /* 红色代表化学的热情 */
+            --primary-dark: #c0392b;
             --bg-dark: #0f172a;
             --bg-card: #1e293b;
             --text-light: #f8fafc;
@@ -53,7 +53,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary), #f39c12); /* 红橙渐变 */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -70,7 +70,7 @@
             transition: color 0.3s ease;
         }
         
-        .nav_links a:hover {
+        .nav-links a:hover {
             color: var(--primary);
         }
         
@@ -114,14 +114,14 @@
         
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
         }
         
         .avatar {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary), #f39c12);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -202,7 +202,7 @@
         
         .card-image {
             height: 200px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary), #f39c12);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -329,12 +329,12 @@
     <!-- 导航栏 -->
     <nav>
         <div class="container nav-container">
-            <div class="logo">MM</div>
+            <div class="logo">化学+</div>
             <div class="nav-links">
                 <a href="#home">首页</a>
-                <a href="#about">关于</a>
-                <a href="#portfolio">作品集</a>
-                <a href="#contact">联系</a>
+                <a href="#about">课程</a>
+                <a href="#portfolio">实验</a>
+                <a href="#contact">问答</a>
             </div>
         </div>
     </nav>
@@ -344,11 +344,11 @@
         <div class="container">
             <div style="display: flex; align-items: center;">
                 <div class="hero-content">
-                    <h1>你好，我是 MM</h1>
-                    <p>一名全栈开发者，专注于创造优雅且实用的数字体验。我热爱将创意转化为现实，并不断探索技术的边界。</p>
-                    <a href="#contact" class="cta-button">联系我</a>
+                    <h1>探索化学的奥秘</h1>
+                    <p>专为深圳初中生打造的化学学习平台，涵盖人教版九年级化学全册内容，助力中考化学取得优异成绩！</p>
+                    <a href="#about" class="cta-button">开始学习</a>
                 </div>
-                <div class="avatar">MM</div>
+                <div class="avatar">🧪</div>
             </div>
         </div>
     </section>
@@ -356,24 +356,24 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">关于我</h2>
+            <h2 class="section-title">化学课程</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>全栈开发者 & 创意实践者</h3>
-                    <p>拥有5年开发经验，擅长从前端到后端的完整技术栈。我注重代码质量、用户体验和技术创新。</p>
-                    <p>我相信技术应该服务于人，而不是让人适应技术。每个项目都是一个讲述故事的机会。</p>
+                    <h3>深圳初中化学核心内容</h3>
+                    <p>严格按照深圳市初中化学教学大纲和人教版教材编写，覆盖九年级上下册全部知识点。</p>
+                    <p>包含物质的变化与性质、空气与氧气、水的组成、化学方程式、酸碱盐等重点章节，配有大量深圳中考真题解析。</p>
                     <div class="skills">
-                        <span class="skill-tag">HTML/CSS/JavaScript</span>
-                        <span class="skill-tag">React/Vue</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">物质构成</span>
+                        <span class="skill-tag">化学方程式</span>
+                        <span class="skill-tag">酸碱盐</span>
+                        <span class="skill-tag">金属化学</span>
+                        <span class="skill-tag">溶液浓度</span>
+                        <span class="skill-tag">中考真题</span>
                     </div>
                 </div>
                 <div style="background: var(--bg-card); padding: 2rem; border-radius: 12px;">
-                    <h3>我的工作方式</h3>
-                    <p style="color: var(--text-gray); margin-top: 1rem;">• 用户体验优先<br>• 代码简洁可维护<br>• 持续学习新技术<br>• 注重细节和品质</p>
+                    <h3>学习特色</h3>
+                    <p style="color: var(--text-gray); margin-top: 1rem;">• 深圳本地化教学<br>• 中考考点全覆盖<br>• 实验视频演示<br>• 在线练习题库<br>• 错题自动收集</p>
                 </div>
             </div>
         </div>
@@ -382,27 +382,27 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">作品集</h2>
+            <h2 class="section-title">化学实验</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-card">
-                    <div class="card-image">项目 1</div>
+                    <div class="card-image">🔥</div>
                     <div class="card-content">
-                        <h3>电商平台</h3>
-                        <p>全栈电商解决方案，包含用户系统、支付集成和管理后台。</p>
+                        <h3>燃烧条件探究</h3>
+                        <p>通过对比实验探究可燃物燃烧的条件，理解灭火原理，掌握安全知识。</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
-                    <div class="card-image">项目 2</div>
+                    <div class="card-image">💧</div>
                     <div class="card-content">
-                        <h3>数据分析仪表板</h3>
-                        <p>实时数据可视化平台，帮助客户做出数据驱动的决策。</p>
+                        <h3>水电解实验</h3>
+                        <p>观察水电解产生氢气和氧气的现象，验证水的组成，理解化学变化本质。</p>
                     </div>
                 </div>
                 <div class="portfolio-card">
-                    <div class="card-image">项目 3</div>
+                    <div class="card-image">🧪</div>
                     <div class="card-content">
-                        <h3>移动应用</h3>
-                        <p>跨平台移动应用，提供流畅的用户体验和强大的功能。</p>
+                        <h3>酸碱中和滴定</h3>
+                        <p>学习使用指示剂判断酸碱中和终点，掌握溶液pH值变化规律。</p>
                     </div>
                 </div>
             </div>
@@ -412,21 +412,17 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">联系我</h2>
+            <h2 class="section-title">化学问答</h2>
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
-                    <label for="name">姓名</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="name">你的姓名</label>
+                    <input type="text" id="name" name="name" placeholder="例如：深圳中学 张三" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">邮箱</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">问题描述</label>
+                    <textarea id="message" name="message" placeholder="请详细描述你的化学问题，比如：'如何配平化学方程式？' 或 '深圳中考化学实验题怎么复习？'" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="message">消息</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn" id="submitBtn">发送消息</button>
+                <button type="submit" class="submit-btn" id="submitBtn">提交问题</button>
                 <div id="formAlert" class="form-alert" style="display: none;"></div>
             </form>
         </div>
@@ -435,7 +431,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 MM. 保留所有权利。</p>
+            <p>&copy; 2026 深圳初中化学学习网. 专注深圳中考化学辅导.</p>
         </div>
     </footer>
 
@@ -461,16 +457,16 @@
             const alertBox = document.getElementById('formAlert');
             
             btn.disabled = true;
-            btn.textContent = '发送中...';
+            btn.textContent = '提交中...';
             
             // 模拟发送过程
             setTimeout(() => {
                 btn.disabled = false;
-                btn.textContent = '发送消息';
+                btn.textContent = '提交问题';
                 if (alertBox) {
                     alertBox.style.display = 'block';
                     alertBox.className = 'form-alert success';
-                    alertBox.textContent = '已收到你的留言，我会尽快与您联系。';
+                    alertBox.textContent = '已收到你的化学问题！我们会尽快为你解答，并可能将答案添加到学习资源中。';
                 }
                 this.reset();
             }, 800);

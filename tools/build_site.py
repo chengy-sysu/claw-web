@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import html
+import json
 import os
 import re
 from pathlib import Path
@@ -43,6 +44,7 @@ class ExpPage:
     title: str
     filename: str
     blocks: dict[str, list[str]]
+    notes: dict[str, object]
 
 
 def _safe(s: str) -> str:
@@ -68,6 +70,77 @@ def _extract_short_tip(blocks: dict[str, list[str]]) -> str:
             return tip
     return "点击进入页面查看：原理、操作、现象、结论、误差与注意事项。"
 
+def _render_notes(page: ExpPage) -> str:
+    notes = page.notes or {}
+    parts: list[str] = []
+
+    goal = str(notes.get("goal") or "").strip()
+    if goal:
+        parts.append(_render_block("实验目标", [goal]))
+
+    equations = notes.get("equations") or []
+    if isinstance(equations, list) and equations:
+        eq_items = [str(e).strip() for e in equations if str(e).strip()]
+        if eq_items:
+            parts.append(_render_block("必背方程式", eq_items))
+
+    title_map = {
+        "principle": "核心原理",
+        "steps": "关键步骤（怎么做）",
+        "phenomena": "现象（看到什么）",
+        "exam_points": "高频考点（怎么拿分）",
+        "common_errors": "常见错误（怎么避坑）",
+        "safety": "安全提醒",
+        "quick_check": "自测清单",
+    }
+    for k, label in title_map.items():
+        v = notes.get(k)
+        if not isinstance(v, list) or not v:
+            continue
+        items = [str(x).strip() for x in v if str(x).strip()]
+        if items:
+            parts.append(_render_block(label, items))
+
+    return "\n".join(parts)
+
+
+def _render_pdf_extract(page: ExpPage) -> str:
+    if not page.blocks:
+        return ""
+
+    ordered: list[tuple[str, list[str]]] = []
+    seen = set()
+    for label in PREFERRED_BLOCK_ORDER:
+        items = page.blocks.get(label)
+        if items:
+            ordered.append((label, items))
+            seen.add(label)
+    for label, items in page.blocks.items():
+        if label in seen:
+            continue
+        if items:
+            ordered.append((label, items))
+
+    inner = []
+    for label, items in ordered:
+        lis = "\n".join(f"<li>{_safe(t)}</li>" for t in items)
+        inner.append(
+            f"""<div class="card" style="background: rgba(15, 23, 42, 0.35);">
+  <h3 style="margin-bottom: 0.5rem;">{_safe(label)}</h3>
+  <ul class="block-list">{lis}</ul>
+</div>"""
+        )
+    inner_html = "\n".join(inner)
+
+    return f"""
+    <details class="exp-block">
+      <summary>PDF摘录（原文提取，供对照）</summary>
+      <div class="grid" style="grid-template-columns: 1fr; gap: 12px; margin-top: 12px;">
+        {inner_html}
+      </div>
+    </details>
+    """.strip()
+
 
 def _render_block(label: str, items: list[str]) -> str:
     lis = "\n".join(f"<li>{_safe(t)}</li>" for t in items)
@@ -84,24 +157,11 @@ def _render_block(label: str, items: list[str]) -> str:
 def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPage | None) -> str:
     title = _normalize_title(page.title)
     short_tip = _extract_short_tip(page.blocks)
+    if page.notes and str(page.notes.get("goal") or "").strip():
+        short_tip = str(page.notes.get("goal")).strip()
 
-    # Ordered blocks first; keep any remaining blocks at the end to avoid losing information.
-    seen = set()
-    ordered_parts: list[str] = []
-    for label in PREFERRED_BLOCK_ORDER:
-        items = page.blocks.get(label)
-        if not items:
-            continue
-        ordered_parts.append(_render_block(label, items))
-        seen.add(label)
-    for label, items in page.blocks.items():
-        if label in seen:
-            continue
-        if not items:
-            continue
-        ordered_parts.append(_render_block(label, items))
-
-    blocks_html = "\n".join(ordered_parts)
+    notes_html = _render_notes(page)
+    pdf_html = _render_pdf_extract(page)
 
     prev_link = (
         f'<a class="secondary-button" href="{_safe(prev_page.filename)}">← { _safe(prev_page.title) }</a>'
@@ -153,7 +213,8 @@ def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPag
           </div>
 
           <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
-            {blocks_html}
+            {notes_html}
+            {pdf_html}
           </section>
 
           <div class="nav-prev-next">
@@ -198,7 +259,12 @@ def _update_index_experiment_list(index_html: str, pages: list[ExpPage]) -> str:
 
     cards = []
     for p in pages:
-        tip = _extract_short_tip(p.blocks)
+        if p.notes and str(p.notes.get("goal") or "").strip():
+            tip = str(p.notes.get("goal")).strip()
+            if len(tip) > 110:
+                tip = tip[:110].rstrip() + "…"
+        else:
+            tip = _extract_short_tip(p.blocks)
         cards.append(
             f'''<a class="exp-link card" href="experiments/{_safe(p.filename)}">
   <h3>{_safe(_normalize_title(p.title))}</h3>
@@ -214,6 +280,11 @@ def main() -> None:
     repo_dir = Path(__file__).resolve().parents[1]
     sections = generate_sections(repo_dir)
 
+    notes_path = repo_dir / "content" / "exp_notes.json"
+    notes_by_idx: dict[str, dict[str, object]] = {}
+    if notes_path.exists():
+        notes_by_idx = json.loads(notes_path.read_text("utf-8"))
+
     out_dir = repo_dir / "experiments"
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -228,7 +299,15 @@ def main() -> None:
         for k, v in blocks.items():
             if isinstance(v, list):
                 blocks2[str(k)] = [str(x) for x in v if str(x).strip()]
-        pages.append(ExpPage(index=i, title=title, filename=_exp_filename(i), blocks=blocks2))
+        pages.append(
+            ExpPage(
+                index=i,
+                title=title,
+                filename=_exp_filename(i),
+                blocks=blocks2,
+                notes=notes_by_idx.get(str(i), {}),
+            )
+        )
 
     # Write experiment pages.
     for idx, p in enumerate(pages):

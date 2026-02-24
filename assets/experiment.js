@@ -325,4 +325,58 @@
     var ans = e.target.closest('.qa-answer');
     if (ans) ans.classList.toggle('qa-hidden');
   });
+
+  // --- Apparatus labeling game ---
+  document.querySelectorAll('.apparatus-game').forEach(function (game) {
+    var inputs = Array.from(game.querySelectorAll('.apparatus-input'));
+    var markers = Array.from(game.closest('.exp-block').querySelectorAll('.apparatus-marker'));
+    var successEl = game.querySelector('.apparatus-success');
+    var resetBtn = game.querySelector('.apparatus-reset-btn');
+    var total = inputs.length;
+
+    function checkAllDone() {
+      var done = game.querySelectorAll('.apparatus-input:disabled').length;
+      if (done === total && successEl) {
+        successEl.style.display = 'block';
+      }
+    }
+
+    inputs.forEach(function (inp, idx) {
+      inp.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          var answer = inp.getAttribute('data-answer') || '';
+          var val = inp.value.trim();
+          var item = inp.closest('.apparatus-input-item');
+          if (val === answer) {
+            inp.disabled = true;
+            item.classList.add('correct');
+            item.classList.remove('wrong');
+            if (markers[idx]) markers[idx].classList.add('correct');
+            var next = game.querySelector('.apparatus-input:not(:disabled)');
+            if (next) next.focus();
+            checkAllDone();
+          } else {
+            item.classList.add('wrong');
+            inp.select();
+            setTimeout(function () { item.classList.remove('wrong'); }, 600);
+          }
+        }
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        inputs.forEach(function (inp, idx) {
+          inp.disabled = false;
+          inp.value = '';
+          var item = inp.closest('.apparatus-input-item');
+          item.classList.remove('correct', 'wrong');
+          if (markers[idx]) markers[idx].classList.remove('correct');
+        });
+        if (successEl) successEl.style.display = 'none';
+        if (inputs[0]) inputs[0].focus();
+      });
+    }
+  });
 })();

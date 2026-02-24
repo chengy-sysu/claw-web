@@ -309,6 +309,51 @@ def _render_interactive_qa(notes: dict) -> str:
     """.strip()
 
 
+def _render_apparatus_game(page: ExpPage) -> str:
+    """Render apparatus labeling game if data exists."""
+    notes = page.notes or {}
+    labels = notes.get("apparatus_labels")
+    if not labels or not isinstance(labels, list):
+        return ""
+
+    cover_src = f"../assets/covers/exp-{page.index:02d}.svg"
+
+    markers_html = []
+    inputs_html = []
+    for i, item in enumerate(labels, 1):
+        name = str(item.get("name", ""))
+        x = item.get("x", 0)
+        y = item.get("y", 0)
+        markers_html.append(
+            f'<span class="apparatus-marker" style="left:{x}%;top:{y}%">{i}</span>'
+        )
+        inputs_html.append(
+            f'<div class="apparatus-input-item">'
+            f'<span class="apparatus-input-num">{i}</span>'
+            f'<input type="text" class="apparatus-input" data-answer="{_safe(name)}" '
+            f'placeholder="输入名称" autocomplete="off" spellcheck="false">'
+            f'</div>'
+        )
+
+    return f"""
+    <details class="exp-block" open>
+      <summary>仪器识别练习</summary>
+      <p class="muted" style="margin-bottom:8px;">看装置图，输入对应编号的仪器/物品名称，按回车检查。</p>
+      <div class="apparatus-game">
+        <div class="apparatus-diagram">
+          <img src="{_safe(cover_src)}" alt="实验装置图">
+          {"".join(markers_html)}
+        </div>
+        <div class="apparatus-inputs">
+          {"".join(inputs_html)}
+        </div>
+        <div class="apparatus-success" style="display:none;">全部正确！</div>
+        <button class="pill apparatus-reset-btn" type="button">重新开始</button>
+      </div>
+    </details>
+    """.strip()
+
+
 def _render_notes(page: ExpPage) -> str:
     notes = page.notes or {}
     parts: list[str] = []
@@ -327,6 +372,11 @@ def _render_notes(page: ExpPage) -> str:
             eq_interactive = [f'<span class="chem-eq chem-eq-interactive">{_chem_equation_to_interactive_html(e)}</span>' for e in eq_items]
             combined = [f'{d}{i}' for d, i in zip(eq_display, eq_interactive)]
             parts.append(_render_block_html("必背方程式", combined))
+
+    # Apparatus labeling game (right after equations, before principle/steps)
+    apparatus_html = _render_apparatus_game(page)
+    if apparatus_html:
+        parts.append(apparatus_html)
 
     title_map = {
         "principle": "核心原理",

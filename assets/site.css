@@ -615,6 +615,35 @@ summary {
   color: #22c55e;
 }
 
+.cond-blank.cond-wrong,
+.symbol-blank.cond-wrong {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  animation: shake 0.4s ease;
+}
+
+.eq-input {
+  border: none;
+  border-bottom: 1.5px solid var(--primary);
+  background: transparent;
+  color: var(--text-light);
+  font-size: inherit;
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+  padding: 0 2px;
+}
+
+.eq-input:focus {
+  border-bottom-color: #22c55e;
+}
+
+.eq-input:disabled {
+  color: #22c55e;
+  border-bottom-color: #22c55e;
+  opacity: 1;
+}
+
 /* === Step ordering game === */
 .step-order-game {
   margin-top: 10px;

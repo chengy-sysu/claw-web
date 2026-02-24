@@ -172,6 +172,60 @@
       eqBtn.style.display = 'none';
     } else {
     var isEqMode = false;
+
+    // Normalize answer text for comparison
+    var SYMBOL_ALIASES = {
+      '上': '↑', 'up': '↑', '升': '↑', '气': '↑',
+      '下': '↓', 'down': '↓', '沉': '↓', '沉淀': '↓'
+    };
+
+    function checkBlankAnswer(blank, input) {
+      var answer = blank.getAttribute('data-answer') || '';
+      var val = input.value.trim();
+      var normalized = SYMBOL_ALIASES[val] || val;
+      if (normalized === answer) {
+        blank.classList.add('cond-correct');
+        blank.classList.remove('cond-wrong');
+        input.disabled = true;
+        input.value = answer;
+        return true;
+      } else {
+        blank.classList.add('cond-wrong');
+        blank.classList.remove('cond-correct');
+        input.select();
+        setTimeout(function () { blank.classList.remove('cond-wrong'); }, 800);
+        return false;
+      }
+    }
+
+    function createInputForBlank(blank) {
+      var isSymbol = blank.classList.contains('symbol-blank');
+      var inp = document.createElement('input');
+      inp.type = 'text';
+      inp.className = 'eq-input';
+      inp.setAttribute('autocomplete', 'off');
+      inp.setAttribute('spellcheck', 'false');
+      if (isSymbol) {
+        inp.placeholder = '↑↓';
+        inp.style.width = '2.5em';
+      } else {
+        inp.placeholder = '条件';
+        inp.style.width = '4em';
+      }
+      inp.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (checkBlankAnswer(blank, inp)) {
+            // Move focus to next unanswered input
+            var all = Array.from(document.querySelectorAll('.eq-input:not(:disabled)'));
+            if (all.length) all[0].focus();
+          }
+        }
+      });
+      blank.textContent = '';
+      blank.appendChild(inp);
+    }
+
     eqBtn.addEventListener('click', function () {
       isEqMode = !isEqMode;
       document.querySelectorAll('.chem-eq-display').forEach(function (el) {
@@ -182,25 +236,22 @@
       });
       eqBtn.textContent = isEqMode ? '退出练习' : '方程式练习';
       eqBtn.classList.toggle('active', isEqMode);
-      if (!isEqMode) {
-        document.querySelectorAll('.cond-blank, .symbol-blank').forEach(function (el) {
-          el.textContent = '?';
-          el.classList.remove('cond-correct');
+      if (isEqMode) {
+        // Create input fields inside blanks
+        document.querySelectorAll('.cond-blank, .symbol-blank').forEach(function (blank) {
+          blank.classList.remove('cond-correct', 'cond-wrong');
+          createInputForBlank(blank);
+        });
+        // Auto-focus first input
+        var first = document.querySelector('.eq-input');
+        if (first) first.focus();
+      } else {
+        // Reset blanks
+        document.querySelectorAll('.cond-blank, .symbol-blank').forEach(function (blank) {
+          blank.classList.remove('cond-correct', 'cond-wrong');
+          blank.textContent = '?';
         });
       }
-    });
-
-    document.addEventListener('click', function (e) {
-      if (!isEqMode) return;
-      var blank = e.target.closest('.cond-blank, .symbol-blank');
-      if (!blank) return;
-      var choices = (blank.getAttribute('data-choices') || '').split(',');
-      var answer = blank.getAttribute('data-answer');
-      var current = blank.textContent;
-      var idx = choices.indexOf(current);
-      var next = choices[(idx + 1) % choices.length];
-      blank.textContent = next;
-      blank.classList.toggle('cond-correct', next === answer);
     });
     } // end else (hasBlanks)
   }

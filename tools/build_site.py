@@ -160,6 +160,13 @@ def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPag
     if page.notes and str(page.notes.get("goal") or "").strip():
         short_tip = str(page.notes.get("goal")).strip()
 
+    cover_src = f"../assets/covers/exp-{page.index:02d}.svg"
+    cover_html = f"""
+      <div class="exp-cover large">
+        <img src="{_safe(cover_src)}" alt="{_safe(title)} 实验装置图" loading="lazy">
+      </div>
+    """.strip()
+
     notes_html = _render_notes(page)
     pdf_html = _render_pdf_extract(page)
 
@@ -204,6 +211,7 @@ def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPag
       <div class="two-col">
         <div>
           <h2 class="section-title" style="text-align:left; margin-bottom: 1rem;">{_safe(title)}</h2>
+          {cover_html}
           <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
 
           <div class="controls">
@@ -265,8 +273,12 @@ def _update_index_experiment_list(index_html: str, pages: list[ExpPage]) -> str:
                 tip = tip[:110].rstrip() + "…"
         else:
             tip = _extract_short_tip(p.blocks)
+        cover_src = f"assets/covers/exp-{p.index:02d}.svg"
         cards.append(
             f'''<a class="exp-link card" href="experiments/{_safe(p.filename)}">
+  <div class="exp-cover">
+    <img src="{_safe(cover_src)}" alt="{_safe(_normalize_title(p.title))} 实验装置图" loading="lazy">
+  </div>
   <h3>{_safe(_normalize_title(p.title))}</h3>
   <p>{_safe(tip)}</p>
 </a>'''

@@ -204,6 +204,26 @@ nav {
   color: var(--text-gray);
 }
 
+.exp-cover {
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0b1220;
+  margin-bottom: 0.9rem;
+}
+
+.exp-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.exp-cover.large {
+  height: 220px;
+}
+
 .exp-link {
   display: block;
   text-decoration: none;
@@ -494,4 +514,3 @@ footer {
     grid-template-columns: 1fr;
   }
 }
-

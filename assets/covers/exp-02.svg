@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-label="实验2：加热KMnO4制氧气">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e293b"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e74c3c" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#f39c12" stop-opacity="0.65"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect x="16" y="16" width="1168" height="488" rx="30" fill="url(#bg)" stroke="#334155" stroke-width="2"/>
+  <rect x="40" y="40" width="250" height="54" rx="16" fill="url(#accent)" opacity="0.18" stroke="#334155"/>
+  <text x="62" y="76" fill="#f8fafc" font-family="system-ui, -apple-system, Segoe UI, Arial" font-size="20" font-weight="700">实验2：加热KMnO4制氧气</text>
+
+  
+  <path d="M120 135 C 240 55, 360 70, 460 150" fill="none" stroke="#334155" stroke-width="3" opacity="0.55"/>
+  <path d="M720 150 C 830 70, 980 80, 1090 160" fill="none" stroke="#334155" stroke-width="3" opacity="0.55"/>
+
+  <g filter="url(#shadow)">
+    <rect x="210" y="140" width="16" height="300" rx="8" fill="#94a3b8"/>
+    <rect x="145" y="440" width="146" height="16" rx="8" fill="#64748b"/>
+    <rect x="226" y="185" width="140" height="10" rx="5" fill="#64748b"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M360 150 h90 v260 a45 45 0 0 1 -90 0 z" fill="#0b1220" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M372 162 h66 v140 a33 33 0 0 1 -66 0 z" fill="#1e293b" opacity="0.65"/>
+    <rect x="392" y="128" width="30" height="22" rx="6" fill="#475569"/>
+    <path d="M420 140 C 520 140, 580 220, 680 240" fill="none" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M400 420 C 380 400, 390 370, 420 360 C 410 390, 430 395, 440 410 C 430 420, 415 426, 400 420 z" fill="url(#accent)" opacity="0.9"/>
+    <path d="M410 415 C 402 400, 410 385, 424 378 C 420 392, 432 395, 436 407 C 430 413, 420 418, 410 415 z" fill="#f8fafc" opacity="0.18"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="720" y="290" width="380" height="150" rx="22" fill="#0b1220" stroke="#334155" stroke-width="3"/>
+    <path d="M740 330 h340 v90 a16 16 0 0 1 -16 16 h-308 a16 16 0 0 1 -16 -16 z" fill="#0ea5e9" opacity="0.22"/>
+    <path d="M860 180 h120 v210 a60 60 0 0 1 -120 0 z" fill="#0b1220" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M872 192 h96 v120 a48 48 0 0 1 -96 0 z" fill="#1e293b" opacity="0.65"/>
+    <path d="M900 240 C 910 265, 910 285, 910 310" fill="none" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

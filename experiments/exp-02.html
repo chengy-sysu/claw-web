@@ -47,6 +47,7 @@
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
             <button id="quizMode" class="pill" type="button">自测模式</button>
+            <button id="eqPractice" class="pill" type="button">方程式练习</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
@@ -60,7 +61,7 @@
 <details class="exp-block" open>
       <summary>必背方程式</summary>
       <ul class="block-list">
-        <li><span class="chem-eq">2KMnO<sub>4</sub> <span class="chem-condition"><span class="cond-text">△</span><span class="cond-arrow">=====</span></span> K<sub>2</sub>MnO<sub>4</sub> + MnO<sub>2</sub> + O<sub>2</sub>↑</span></li>
+        <li><span class="chem-eq chem-eq-display">2KMnO<sub>4</sub> <span class="chem-condition"><span class="cond-text">△</span><span class="cond-arrow">=====</span></span> K<sub>2</sub>MnO<sub>4</sub> + MnO<sub>2</sub> + O<sub>2</sub>↑</span><span class="chem-eq chem-eq-interactive">2KMnO<sub>4</sub> <span class="chem-condition"><span class="cond-blank" data-answer="△" data-choices="△,点燃,高温,MnO2,通电">?</span><span class="cond-arrow">=====</span></span> K<sub>2</sub>MnO<sub>4</sub> + MnO<sub>2</sub> + O<sub>2</sub><span class="symbol-blank" data-answer="↑" data-choices="↑,↓,">?</span></span></li>
       </ul>
     </details>
 <details class="exp-block" open>
@@ -81,6 +82,28 @@
 <li>移：先把导管移出水面。</li>
 <li>灭：再熄灭酒精灯（防倒吸、避免炸裂）。</li>
       </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>操作排序练习</summary>
+      <p class="step-order-label">口诀：<strong>检装固点收移灭</strong> — 点击标签，按正确顺序排列：</p>
+      <div class="step-order-game" data-correct='[&quot;检&quot;, &quot;装&quot;, &quot;固&quot;, &quot;点&quot;, &quot;收&quot;, &quot;移&quot;, &quot;灭&quot;]'>
+        <div class="step-order-choices">
+      <button class="step-chip" data-label="检" type="button">检</button>
+      <button class="step-chip" data-label="装" type="button">装</button>
+      <button class="step-chip" data-label="固" type="button">固</button>
+      <button class="step-chip" data-label="点" type="button">点</button>
+      <button class="step-chip" data-label="收" type="button">收</button>
+      <button class="step-chip" data-label="移" type="button">移</button>
+      <button class="step-chip" data-label="灭" type="button">灭</button>
+        </div>
+        <div class="step-order-answer"></div>
+        <div class="step-order-success">排序正确！</div>
+        <button class="pill step-reset-btn" type="button">重新排列</button>
+      </div>
+    <div class="step-why-questions" style="display:none;">
+      <p style="font-weight:700; margin-bottom:8px;">追问 — 想想为什么？<span class="muted">（点击揭示答案）</span></p>
+      <div class="why-item"><p class="why-q">Q: 为什么先将导管移出水面，再熄灭酒精灯？</p><p class="why-a">A: 防止水倒吸进入热试管，导致试管因骤冷而炸裂。</p></div><div class="why-item"><p class="why-q">Q: 为什么要等连续均匀气泡才开始收集？</p><p class="why-a">A: 一开始冒出的气泡是装置内残留的空气，不是纯O₂，过早收集会导致O₂不纯。</p></div><div class="why-item"><p class="why-q">Q: 试管口为什么要略向下倾斜？</p><p class="why-a">A: 防止加热时生成的水蒸气冷凝后回流到试管底部的高温区域，造成试管炸裂。</p></div><div class="why-item"><p class="why-q">Q: 试管口放棉花的作用是什么？</p><p class="why-a">A: 防止KMnO₄粉末随气流进入导管，堵塞导管。</p></div>
+    </div>
     </details>
 <details class="exp-block" open>
       <summary>现象（看到什么）</summary>
@@ -114,6 +137,12 @@
         <li>加热玻璃仪器先预热；外壁擦干，避免受热不均炸裂。</li>
 <li>实验后试管冷却后再清洗，避免骤冷炸裂。</li>
       </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>重点追问（点击揭示答案）</summary>
+      <div class="qa-cards">
+        <div class="qa-card"><p class="qa-question">Q: 使用了什么方法收集O₂？为什么可以使用该方法？</p><p class="qa-answer qa-hidden">A: 排水法收集。因为O₂不易溶于水且不与水反应。也可用向上排空气法（O₂密度比空气大）。</p></div><div class="qa-card"><p class="qa-question">Q: 什么时候开始收集？什么时候说明集满？</p><p class="qa-answer qa-hidden">A: 导管口出现连续均匀气泡时开始收集。集气瓶口有大气泡冒出说明集满。</p></div><div class="qa-card"><p class="qa-question">Q: 如何检验O₂？如何验满？</p><p class="qa-answer qa-hidden">A: 检验：将带火星的木条伸入集气瓶中，木条复燃则为O₂。验满：将带火星的木条放在集气瓶口，木条复燃则已满。</p></div>
+      </div>
     </details>
             <details class="exp-block">
       <summary>PDF摘录（原文提取，供对照）</summary>

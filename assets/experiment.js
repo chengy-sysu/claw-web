@@ -162,4 +162,116 @@
       if (cls) applyFontSize(cls);
     });
   });
+
+  // --- Equation practice mode ---
+  var eqBtn = document.getElementById('eqPractice');
+  if (eqBtn) {
+    // Hide button if no interactive blanks exist
+    var hasBlanks = document.querySelectorAll('.cond-blank, .symbol-blank').length > 0;
+    if (!hasBlanks) {
+      eqBtn.style.display = 'none';
+    } else {
+    var isEqMode = false;
+    eqBtn.addEventListener('click', function () {
+      isEqMode = !isEqMode;
+      document.querySelectorAll('.chem-eq-display').forEach(function (el) {
+        el.style.display = isEqMode ? 'none' : '';
+      });
+      document.querySelectorAll('.chem-eq-interactive').forEach(function (el) {
+        el.style.display = isEqMode ? 'inline' : 'none';
+      });
+      eqBtn.textContent = isEqMode ? '退出练习' : '方程式练习';
+      eqBtn.classList.toggle('active', isEqMode);
+      if (!isEqMode) {
+        document.querySelectorAll('.cond-blank, .symbol-blank').forEach(function (el) {
+          el.textContent = '?';
+          el.classList.remove('cond-correct');
+        });
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!isEqMode) return;
+      var blank = e.target.closest('.cond-blank, .symbol-blank');
+      if (!blank) return;
+      var choices = (blank.getAttribute('data-choices') || '').split(',');
+      var answer = blank.getAttribute('data-answer');
+      var current = blank.textContent;
+      var idx = choices.indexOf(current);
+      var next = choices[(idx + 1) % choices.length];
+      blank.textContent = next;
+      blank.classList.toggle('cond-correct', next === answer);
+    });
+    } // end else (hasBlanks)
+  }
+
+  // --- Step ordering game ---
+  document.querySelectorAll('.step-order-game').forEach(function (game) {
+    var correct = JSON.parse(game.getAttribute('data-correct'));
+    var choicesEl = game.querySelector('.step-order-choices');
+    var answerEl = game.querySelector('.step-order-answer');
+    var resetBtn = game.querySelector('.step-reset-btn');
+    var successEl = game.querySelector('.step-order-success');
+    var whyEl = game.parentElement.querySelector('.step-why-questions');
+    var selected = [];
+
+    function shuffle(container) {
+      var items = Array.from(container.children);
+      for (var i = items.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        container.appendChild(items[j]);
+        var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+      }
+    }
+    shuffle(choicesEl);
+
+    choicesEl.addEventListener('click', function (e) {
+      var chip = e.target.closest('.step-chip');
+      if (!chip || chip.classList.contains('used')) return;
+      var label = chip.getAttribute('data-label');
+      if (label === correct[selected.length]) {
+        selected.push(label);
+        chip.classList.add('used', 'step-correct');
+        var placed = document.createElement('span');
+        placed.className = 'step-placed';
+        placed.textContent = label;
+        answerEl.appendChild(placed);
+        if (selected.length === correct.length) {
+          if (successEl) successEl.style.display = 'block';
+          if (whyEl) whyEl.style.display = '';
+        }
+      } else {
+        chip.classList.add('step-wrong');
+        setTimeout(function () { chip.classList.remove('step-wrong'); }, 500);
+      }
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        selected = [];
+        answerEl.innerHTML = '';
+        choicesEl.querySelectorAll('.step-chip').forEach(function (c) {
+          c.classList.remove('used', 'step-correct', 'step-wrong');
+        });
+        shuffle(choicesEl);
+        if (successEl) successEl.style.display = 'none';
+        if (whyEl) whyEl.style.display = 'none';
+        whyEl && whyEl.querySelectorAll('.why-a').forEach(function (a) {
+          a.classList.remove('revealed');
+        });
+      });
+    }
+  });
+
+  // --- Why question reveal ---
+  document.addEventListener('click', function (e) {
+    var ans = e.target.closest('.why-a');
+    if (ans) ans.classList.toggle('revealed');
+  });
+
+  // --- Q&A card reveal ---
+  document.addEventListener('click', function (e) {
+    var ans = e.target.closest('.qa-answer');
+    if (ans) ans.classList.toggle('qa-hidden');
+  });
 })();

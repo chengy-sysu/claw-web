@@ -182,6 +182,133 @@ def _extract_short_tip(blocks: dict[str, list[str]]) -> str:
             return tip
     return "点击进入页面查看：原理、操作、现象、结论、误差与注意事项。"
 
+CONDITION_DISTRACTORS = ["点燃", "△", "高温", "MnO2", "通电", "催化剂"]
+SYMBOL_DISTRACTORS = ["↑", "↓", ""]
+
+
+def _chem_equation_to_interactive_html(eq: str) -> str:
+    """Render an equation with blanks for conditions and ↑↓ symbols."""
+    s = eq.strip()
+    if not s:
+        return ""
+
+    m = re.search(r'=\[(.+?)\]=', s)
+    if not m:
+        # No condition — just return standard rendering
+        return _chem_equation_to_html(s)
+
+    condition = m.group(1)
+    left = s[:m.start()].strip()
+    right = s[m.end():].strip()
+
+    # Build distractor choices for condition
+    choices = [condition]
+    for d in CONDITION_DISTRACTORS:
+        if d != condition and len(choices) < 5:
+            choices.append(d)
+    choices_str = _safe(",".join(choices))
+
+    arrow_html = (
+        f'<span class="chem-condition">'
+        f'<span class="cond-blank" data-answer="{_safe(condition)}" data-choices="{choices_str}">?</span>'
+        f'<span class="cond-arrow">=====</span>'
+        f'</span>'
+    )
+
+    left_html = _chem_equation_to_html_inner(left)
+    right_html = _chem_equation_to_html_inner(right)
+
+    # Replace ↑ and ↓ with interactive blanks using placeholders to avoid nesting
+    placeholders = {}
+    for sym in ("↑", "↓"):
+        if sym in right_html:
+            placeholder = f"__SYM_{id(sym)}__"
+            right_html = right_html.replace(sym, placeholder, 1)  # replace first occurrence only
+            placeholders[placeholder] = (
+                f'<span class="symbol-blank" data-answer="{sym}" '
+                f'data-choices="\u2191,\u2193,">?</span>'
+            )
+    for placeholder, blank_html in placeholders.items():
+        right_html = right_html.replace(placeholder, blank_html)
+
+    return f"{left_html} {arrow_html} {right_html}"
+
+
+def _render_step_ordering_game(notes: dict) -> str:
+    """Render step ordering mini-game if data exists."""
+    labels = notes.get("step_short_labels")
+    mnemonic = notes.get("step_mnemonic", "")
+    why_qs = notes.get("step_why_questions", [])
+    if not labels or not isinstance(labels, list):
+        return ""
+
+    correct_json = _safe(json.dumps(labels, ensure_ascii=False))
+    chips_html = "\n".join(
+        f'      <button class="step-chip" data-label="{_safe(l)}" type="button">{_safe(l)}</button>'
+        for l in labels
+    )
+
+    why_html = ""
+    if why_qs:
+        items = []
+        for item in why_qs:
+            q = str(item.get("q", ""))
+            a = str(item.get("a", ""))
+            items.append(
+                f'<div class="why-item">'
+                f'<p class="why-q">Q: {_safe_chem_inline(q)}</p>'
+                f'<p class="why-a">A: {_safe_chem_inline(a)}</p>'
+                f'</div>'
+            )
+        why_html = f"""
+    <div class="step-why-questions" style="display:none;">
+      <p style="font-weight:700; margin-bottom:8px;">追问 — 想想为什么？<span class="muted">（点击揭示答案）</span></p>
+      {"".join(items)}
+    </div>"""
+
+    return f"""
+    <details class="exp-block" open>
+      <summary>操作排序练习</summary>
+      <p class="step-order-label">口诀：<strong>{_safe(mnemonic)}</strong> — 点击标签，按正确顺序排列：</p>
+      <div class="step-order-game" data-correct='{correct_json}'>
+        <div class="step-order-choices">
+{chips_html}
+        </div>
+        <div class="step-order-answer"></div>
+        <div class="step-order-success">排序正确！</div>
+        <button class="pill step-reset-btn" type="button">重新排列</button>
+      </div>{why_html}
+    </details>
+    """.strip()
+
+
+def _render_interactive_qa(notes: dict) -> str:
+    """Render Q&A cards with blur-to-reveal answers."""
+    qa_list = notes.get("interactive_qa")
+    if not qa_list or not isinstance(qa_list, list):
+        return ""
+
+    cards = []
+    for item in qa_list:
+        q = str(item.get("q", ""))
+        a = str(item.get("a", ""))
+        cards.append(
+            f'<div class="qa-card">'
+            f'<p class="qa-question">Q: {_safe_chem_inline(q)}</p>'
+            f'<p class="qa-answer qa-hidden">A: {_safe_chem_inline(a)}</p>'
+            f'</div>'
+        )
+
+    return f"""
+    <details class="exp-block" open>
+      <summary>重点追问（点击揭示答案）</summary>
+      <div class="qa-cards">
+        {"".join(cards)}
+      </div>
+    </details>
+    """.strip()
+
+
 def _render_notes(page: ExpPage) -> str:
     notes = page.notes or {}
     parts: list[str] = []
@@ -194,8 +321,12 @@ def _render_notes(page: ExpPage) -> str:
     if isinstance(equations, list) and equations:
         eq_items = [str(e).strip() for e in equations if str(e).strip()]
         if eq_items:
-            eq_html = [f'<span class="chem-eq">{_chem_equation_to_html(e)}</span>' for e in eq_items]
-            parts.append(_render_block_html("必背方程式", eq_html))
+            # Standard display
+            eq_display = [f'<span class="chem-eq chem-eq-display">{_chem_equation_to_html(e)}</span>' for e in eq_items]
+            # Interactive display (hidden by default)
+            eq_interactive = [f'<span class="chem-eq chem-eq-interactive">{_chem_equation_to_interactive_html(e)}</span>' for e in eq_items]
+            combined = [f'{d}{i}' for d, i in zip(eq_display, eq_interactive)]
+            parts.append(_render_block_html("必背方程式", combined))
 
     title_map = {
         "principle": "核心原理",
@@ -213,6 +344,16 @@ def _render_notes(page: ExpPage) -> str:
         items = [str(x).strip() for x in v if str(x).strip()]
         if items:
             parts.append(_render_block(label, items))
+        # Insert step ordering game right after "steps" block
+        if k == "steps":
+            game_html = _render_step_ordering_game(notes)
+            if game_html:
+                parts.append(game_html)
+
+    # Interactive Q&A at the end (before quick_check would have been added above)
+    qa_html = _render_interactive_qa(notes)
+    if qa_html:
+        parts.append(qa_html)
 
     return "\n".join(parts)
 
@@ -353,6 +494,7 @@ def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPag
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
             <button id="quizMode" class="pill" type="button">自测模式</button>
+            <button id="eqPractice" class="pill" type="button">方程式练习</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 

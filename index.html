@@ -4,475 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中考化学实验复习 - 化学+</title>
-    <style>
-        :root {
-            --primary: #e74c3c; /* 红色代表化学的热情 */
-            --primary-dark: #c0392b;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-light: #f8fafc;
-            --text-gray: #94a3b8;
-            --border: #334155;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 导航栏 */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), #f39c12); /* 红橙渐变 */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-        }
-        
-        .hero-content {
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-light), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
-        }
-        
-        .avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #f39c12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: bold;
-            margin-left: 2rem;
-        }
-
-        .cta-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .secondary-button {
-            display: inline-block;
-            background: transparent;
-            color: var(--text-light);
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .secondary-button:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-
-        /* About Section */
-        .about {
-            padding: 6rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--text-light), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .about-text p {
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .skill-tag {
-            background: var(--bg-card);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        /* Cards / Grids */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
-        }
-
-        .card h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        .card ul {
-            margin-top: 0.75rem;
-            padding-left: 1.25rem;
-            color: var(--text-gray);
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 6rem 0;
-            background: var(--bg-card);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .portfolio-card {
-            background: var(--bg-dark);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), #f39c12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-        }
-        
-        .card-content {
-            padding: 1.5rem;
-        }
-        
-        .card-content h3 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .card-content p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
-        /* PDF Viewer */
-        .pdf-shell {
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .pdf-toolbar {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            padding: 12px;
-            background: rgba(15, 23, 42, 0.7);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .pdf-toolbar .hint {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
-        .pdf-view {
-            width: 100%;
-            height: 75vh;
-            border: 0;
-            display: block;
-            background: #0b1220;
-        }
-
-        /* Details (accordion) */
-        .controls {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-bottom: 1.25rem;
-        }
-
-        .search {
-            flex: 1;
-            min-width: 240px;
-            padding: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-
-        .pill {
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-light);
-            border-radius: 999px;
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-
-        .pill:hover {
-            border-color: var(--primary);
-        }
-
-        details {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: rgba(30, 41, 59, 0.35);
-            padding: 12px 14px;
-        }
-
-        details[open] {
-            background: rgba(30, 41, 59, 0.6);
-        }
-
-        summary {
-            cursor: pointer;
-            font-weight: 700;
-            outline: none;
-        }
-
-        .block-title {
-            margin-top: 12px;
-            font-weight: 700;
-        }
-
-        .block-list {
-            margin-top: 8px;
-            padding-left: 1.25rem;
-            color: var(--text-gray);
-        }
-
-        .muted {
-            color: var(--text-gray);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 6rem 0;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-gray);
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-        }
-        
-        .form-alert {
-            margin-top: 1rem;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .form-alert.success {
-            background: #065f46;
-            color: white;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: var(--text-gray);
-            border-top: 1px solid var(--border);
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-content {
-                margin-bottom: 2rem;
-            }
-            
-            .avatar {
-                margin-left: 0;
-                margin-top: 2rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -569,14 +101,95 @@
     <!-- Experiments Section -->
     <section id="experiments" class="about">
         <div class="container">
-            <h2 class="section-title">教材实验总结（可搜索）</h2>
+            <h2 class="section-title">教材实验总结（独立页面）</h2>
             <div class="controls">
-                <input id="expSearch" class="search" type="search" placeholder="搜索实验：例如 氧气 / 过滤 / 二氧化碳 / 误差 / 气密性 …">
-                <button id="expandAll" class="pill" type="button">全部展开</button>
-                <button id="collapseAll" class="pill" type="button">全部收起</button>
+                <input id="expIndexSearch" class="search" type="search" placeholder="搜索实验：例如 氧气 / 过滤 / 二氧化碳 / 误差 / 气密性 …">
             </div>
-            <p class="muted">内容来自本仓库 PDF 的文字提取与结构化整理；个别化学方程式在 PDF 中为图片时，网页可能无法完整显示。</p>
-            <div id="expList" class="grid" style="margin-top: 1.25rem;"></div>
+            <p class="muted">每个实验一个页面，更适合课堂讲解、作业布置与学生自测（支持打印/保存）。</p>
+            <div id="expCardList" class="grid" style="margin-top: 1.25rem;">
+                <!-- EXPERIMENT_LIST_START -->
+<a class="exp-link card" href="experiments/exp-01.html">
+  <h3>实验一、空气中氧气含量的测定</h3>
+  <p>选择红磷的原因：能在空气中燃烧；产物为固体；不与空气中其 他成分反应</p>
+</a>
+<a class="exp-link card" href="experiments/exp-02.html">
+  <h3>实验二、加热高锰酸钾制氧气</h3>
+  <p>加热前导管不能伸入集气瓶口内，待导管口产生连续气泡 时才能开始收集 收集完毕，先将导管移出水面，再熄灭酒精灯：防止冷凝 水回流试管炸裂 伸入集气瓶中的导管不宜过长：便于观察气泡…</p>
+</a>
+<a class="exp-link card" href="experiments/exp-03.html">
+  <h3>实验三、分解过氧化氢制取氧气</h3>
+  <p>点击进入页面查看：原理、操作、现象、结论、误差与注意事项。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-04.html">
+  <h3>实验四、分子的运动实验</h3>
+  <p>现象 烧杯 B 中溶液变为红色，烧杯 A 中溶液不变色。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-05.html">
+  <h3>实验五、电解水实验</h3>
+  <p>点击进入页面查看：原理、操作、现象、结论、误差与注意事项。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-06.html">
+  <h3>实验六、过滤操作</h3>
+  <p>过滤法 最常用的分离不溶性固体和液体混合物的操作方法。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-07.html">
+  <h3>实验七、自制简易净水器</h3>
+  <p>小卵石和石英砂、膨松棉的作用：过滤。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-08.html">
+  <h3>实验八、蒸馏操作</h3>
+  <p>蒸馏（左图） 物理过程；原理：利用液体的沸点不同，分离液体混合物。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-09.html">
+  <h3>实验九、验证质量守恒定律</h3>
+  <p>实验一：铜与氧气反应</p>
+</a>
+<a class="exp-link card" href="experiments/exp-10.html">
+  <h3>实验十、木炭的还原性</h3>
+  <p>注意：刚开始预热，试管 ② 中立即产生气泡，但石灰水不变 浑浊，原因是试管 ① 中的空气受热膨胀进入试管 ② 中产生 气泡。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-11.html">
+  <h3>实验十一、探究二氧化碳的性质</h3>
+  <p>（一）密度实验 操作 向装有高低蜡烛的烧杯中倾倒二氧化碳。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-12.html">
+  <h3>实验十二、二氧化碳的实验室制取</h3>
+  <p>固体逐渐溶解，有大量气泡产生 收集方法 向上排空气法（因为 CO2 能溶于水，因此不能用排水法）  长颈漏斗下端要伸入液面以下，形成液封，防止气体从长颈漏</p>
+</a>
+<a class="exp-link card" href="experiments/exp-13.html">
+  <h3>实验十三、探究燃烧的条件</h3>
+  <p> 可燃物；</p>
+</a>
+<a class="exp-link card" href="experiments/exp-14.html">
+  <h3>实验十四、探究金属的活动性顺序</h3>
+  <p>① 将一根用砂纸打磨过的铝丝浸入 CuSO4 溶液中，过一会儿取 出，观察现象。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-15.html">
+  <h3>实验十五、探究铁钉生锈的条件</h3>
+  <p>铁锈的主要 Fe2O3·xH2O 成分</p>
+</a>
+<a class="exp-link card" href="experiments/exp-16.html">
+  <h3>实验十六、一定溶质质量分数 NaCl 溶液的配置</h3>
+  <p>实验用品 仪器：天平、称量纸、烧杯、玻璃棒、药匙、量筒、胶头滴管、 空试剂瓶、空标签瓶。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-17.html">
+  <h3>实验十七、粗盐中难溶性杂质的去除</h3>
+  <p>实验用品 量筒、铁架台（带铁圈）、天平、称量纸、滤纸、火柴。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-18.html">
+  <h3>拓展一、粗盐中可溶性杂质的去除</h3>
+  <p>物质的分离与提纯的基本方法：先找到被提纯物质与杂质之间 的物理或化学性质的差异与联系，再决定选用何种试剂或操作 方法。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-19.html">
+  <h3>拓展二、酸碱中和反应</h3>
+  <p>点击进入页面查看：原理、操作、现象、结论、误差与注意事项。</p>
+</a>
+<a class="exp-link card" href="experiments/exp-20.html">
+  <h3>拓展三、铁的冶炼</h3>
+  <p>高炉炼铁 赤铁矿石、焦炭、空气、石灰石等。</p>
+</a>
+<!-- EXPERIMENT_LIST_END -->
+            </div>
         </div>
     </section>
 
@@ -635,120 +248,6 @@
             <p>&copy; 2026 化学+. 本站内容基于本仓库 PDF 整理，仅供学习复习使用。</p>
         </div>
     </footer>
-
-    <script id="experimentData" type="application/json">[{"title":"实验一、空气中氧气含量的测定","blocks":{"要点":["选择红磷的原因：能在空气中燃烧；产物为固体；不与空气中其 他成分反应"],"试剂选择":["不选择木炭和硫的原因：燃烧产物为气体，不能形成压强差 不选择铁丝的原因：Fe 不能在空气中燃烧 不选择镁条的原因：Mg 能够与空气中的 N2 和 CO2 反应 利用红磷燃烧消耗密闭容器中的氧气，使密闭容器内压强减小，"],"实验原理":["在大气压的作用下，进入容器内水的体积即为减少的氧气的体 积。"],"实验操作":["实验时，连接装置并检查装置气密性后，接下来的实验步骤依次 为：","在集气瓶中加入少量水，目的是吸收五氧化二磷（有毒）， 防止污染空气，且可吸热降温。将水面上方空间分为 5 等 份，并做标记；","在燃烧匙内放入足量的红磷，用酒精灯加热，点燃红磷后立 即伸入瓶中并把橡胶塞塞紧；","用弹簧夹夹紧乳胶管；","待红磷熄灭并冷却至室温后，打开弹簧夹，观察现象。","红磷燃烧的现象是发出黄白色火焰，产生大量白烟，放出热 量。"],"实验现象":["打开弹簧夹，烧杯中的水沿导管流入集气瓶，瓶内液面上 升，集气瓶内液面应上升至约刻度 1 处。出现该现象的原 因是集气瓶内氧气被消耗，瓶内压强减小。","O2 约占空气体积的 1/5"],"实验结论":["燃烧的红磷熄灭，说明集气瓶中剩余氮气的化学性质：不燃烧 也不支持燃烧；集气瓶内水面上升至一定高度后不再变化，说明 N2 的物理性质：难溶于水，化学性质：不与水反应。","（1）、测得氧气体积小于空气体积的 1/5","装置漏气,冷却至室温后，会有部分空气进入瓶内，使得测 量结果小于 1/5；","未冷却至室温时，就打开止水夹；","红磷量不足，瓶内氧气未耗尽;"],"误差分析":["导管中有水残留。","（2）、测得氧气体积大于空气体积的 1/5 塞子塞入的慢，瓶中的空气受热逸出；","点燃的红磷伸入集气瓶内的速度过慢；","止水夹未夹紧，瓶中的空气受热从导管口逸出。","先增大（气体受热膨胀） 集气瓶内气体 压强变化","后减小（红磷燃烧，O2 被消耗；熄灭后，气体冷却，此时 压强值小于初始值）","再回升至初始值（烧杯中的水进入集气瓶，使内外压强一 致） 拉瓦锡把少量的汞（水银）放在密闭的容器里，连续加热达"],"拓展阅读":["（法国化学 家） 二十天之久，结果发现有一部分银白色的液态汞变成了红色的 粉末，同时容器里的空气的体积差不多减少了五分之一。","拉瓦锡研究了剩余的五分之四体积的气体，发现既不能供 给呼吸，也不能支持燃烧，这些气体被称为氮气。","拉瓦锡再把汞表面上所生成的红色粉末（现已证明是氧化 汞）收集起来，放在另一个较小的容器里经过强热后，得到了汞 和一种气体，而且气体的体积恰好等于原来密闭容器里所减少 的空气的那部分体积。将得到的气体和剩下的五分之四体积的","气体混合，得到的气体跟空气的性质完全一样，拉瓦锡把这种气 体命名为氧气。","因而拉瓦锡就得出“空气由氧气和氮气组成，且氧气约占空 气总体积的五分之一”的结论。"]}},{"title":"实验二、加热高锰酸钾制氧气","blocks":{"实验仪器":["酒精灯、试管、铁架台、导管、集气瓶、水槽 实验前，连接装置后，接下来的实验步骤依次为：检、装、 固、点、收、移、灭（顺序不能调换）。"],"实验操作":["检：检查装置气密性；","装：装入药品；","固：用铁架台固定仪器装置；","点：点燃酒精灯；","收：收集氧气；","移：移出导管；","灭：熄灭酒精灯。","排水法：O2 不易溶于水，且不与水反应；","O2 的收集：导管口刚开始有气泡冒出时，不宜收集，因为刚开 始的气体为装置内的空气；看到导管口气泡连续均匀冒出时， 收集 才开始收集；集气瓶瓶口有大气泡冒出时，说明气体已经集满；","集满后的操作：在水下用玻璃片的毛片盖好集气瓶口，移出水 面，正放在桌面上。","说明：O2 的密度比空气大，也可以用向上排空气法收集。"],"检验":["O2 的检验：将带有火星的木条放入集气瓶中，若木条复燃，说 明集气瓶内的气体是氧气。"],"验满":["O2 的验满：将带有火星的木条放在集气瓶口，若木条复燃，说 明氧气已集满。","试管口略向下倾斜：防止冷凝水倒流回试管底部使试管炸 裂 药品要平铺在试管底部：使其均匀受热 铁夹应夹持在试管的中上部（或者距试管口的 1/3 处） 试管内的导管稍伸出胶塞：便于气体导出","试管口放一团棉花：防止加热时，试管内粉末状固体进入 导管"],"注意事项":["加热前导管不能伸入集气瓶口内，待导管口产生连续气泡 时才能开始收集 收集完毕，先将导管移出水面，再熄灭酒精灯：防止冷凝 水回流试管炸裂 伸入集气瓶中的导管不宜过长：便于观察气泡的速度和取","出集气瓶 收集前集气瓶内应装满水，不要留有气泡：防止收集的 O2 不纯 实验过程中和实验结束后试管炸裂的原因？","加热前试管外壁有水","加热时，试管未预热"],"原因分析":["试管口未向下倾斜","加热时试管底部与酒精灯灯芯接触","先熄灭酒精灯，后将导管从水槽中移出","实验后，试管未冷却，直接清洗试管"]}},{"title":"实验三、分解过氧化氢制取氧气","blocks":{"化学方程式":["过氧化氢 性质 化学式为 H2O2（过氧化氢中的氧化合价为 ‒1 价），是一种蓝 色、有轻微刺激性气味的粘稠液体，能以任意比例与水互溶；","其水溶液俗称“双氧水”，常温下分解缓慢，产生的氧气较少。","催化剂为 MnO2。","MnO2 可以加快 H2O2 的分解速率；而其本身的质量和化学性质 均为发生改变，是 H2O2 分解的催化剂，起催化作用。","催化剂 验证 MnO2 质量不变的方法：称量反应前后 MnO2 的质量。","验证 MnO2 化学性质不变的方法：反应停止后，重新加入 H2O2 溶液，仍能快速产生气体。","排水法：O2 不易溶于水，且不与水反应；","收集","向上排空气法：O2 的密度比空气大。"]}},{"title":"实验四、分子的运动实验","blocks":{"要点":["现象 烧杯 B 中溶液变为红色，烧杯 A 中溶液不变色。","结论  分子在不断运动。","浓氨水具有挥发性；","实现结果说明 氨水能使酚酞溶液变红色。","保持氨气化学性质的最小粒子是：氨气分子。","注意","氨气和液氨的化学性质相同。"]}},{"title":"实验五、电解水实验","blocks":{"化学方程式":["电源 直流电 正极产生的为 O2，负极产生的为 H2；简记：“正氧负氢”。","理论上：V(H2) ：V(O2) = 2 ：1。","产生的气体 实际上：由于 O2 微溶于水，所以体积比会大于 2 ：1。","说明：由于产生气体，压强增大，会使中间水柱液面升高。","点燃 a 中产生的气体，产生淡蓝色火焰，说明是 H2。","检验方法 用燃烧的木条检验 b 中气体，若木条燃烧的更旺，说明是 O2。","加入少量稀 H2SO4 或 增强水的导电性 NaOH 的目的 结论","水是由氢元素和氧元素组成的。","最终生成 H2 和 O2 的质量比为 1 : 8；","推论","水分子由氢原子和氧原子构成；","验证了化学变化中分子可分而原子不可分。"]}},{"title":"实验六、过滤操作","blocks":{"要点":["过滤法 最常用的分离不溶性固体和液体混合物的操作方法。","需要的玻璃仪器 烧杯、玻璃棒、漏斗 “一贴”：滤纸紧贴漏斗内壁，防止产生气泡，减慢液体流 速。","“二低”：","◼ 滤纸边缘应略低于漏斗边缘；","◼ 加入漏斗中的液体液面应略低于滤纸的边缘，避免液"],"注意事项":["体不经过滤纸直接流入烧杯。","“三靠”：","倾倒液体时，烧杯口紧靠在玻璃棒上，避免液体飞溅；","玻璃棒下端要紧靠三层滤纸处，防止戳破滤纸；","漏斗下端管口的尖嘴要紧靠承接滤液的烧杯内壁，防 止滤液溅出。","玻璃棒的作用 滤液 引流 属于混合物；过滤只是出去不溶性固体，可溶性物质并未出 去。","滤纸破损；仪器不干净；滤液高于滤纸边缘。","滤液浑浊的原因 此时，应查明原因，重新过滤，直到滤液澄清为止。"]}},{"title":"实验七、自制简易净水器","blocks":{"要点":["小卵石和石英砂、膨松棉的作用：过滤。","活性炭的主要作用：吸附色素和异味。","说明：使用一段时间后，部分物质吸附杂质已达饱和，清洗 后可以继续使用的是纱布、石英砂和小卵石，需要更换的是 活性炭和蓬松棉。"]}},{"title":"实验八、蒸馏操作","blocks":{"要点":["蒸馏（左图） 物理过程；原理：利用液体的沸点不同，分离液体混合物。","加入液体前，应在蒸馏瓶中加入：沸石或碎瓷片；目的是防止 液体暴沸。","蒸馏瓶不能直接加热，需垫陶土网；陶土网的作用是使蒸馏瓶 受热均匀，防止炸裂。"],"注意事项":["冷凝水需要下进上出；目的是便于冷水充满冷凝管，有利于水 蒸气的冷却。","开始馏出的液体有杂质，要弃去。","蒸馏水为纯净物。","长导管的作用：导气和冷凝。","简易蒸馏装置 （右图） 烧杯中的冷水的作用是使水蒸气迅速液化，如果撤掉烧杯，试 管内观察到的现象是出现大量水雾。"]}},{"title":"实验九、验证质量守恒定律","blocks":{"要点":["实验一：铜与氧气反应"],"化学方程式":["① 首先，将铜粉均匀铺放在锥形瓶内，接着将上端系有气球的玻 璃导管插入单孔塞，并用橡胶塞紧密封住锥形瓶口，然后放置 在天平上进行初次称量，并记录下质量数据；","① 首先，在锥形瓶中放入经过砂纸打磨的干净铁丝，再加入盛有 CuSO4 溶液的小试管，塞好橡胶塞，确保密封。接着，将整个 装置放在天平上进行初次称量，并记录下质量数据；","① 首先，在烧杯中加入适量的 Na2CO3，并取一小试管盛装稀盐 酸。接着，将整个装置放在天平上进行初次称量，并记录下质 量数据;","① 首先，使用托盘天平称量陶土网和镁条的质量，并详细记录 下这些数据；"],"实验操作":["实验步骤 ② 将锥形瓶置于陶土网上，用酒精灯进行加热，同时仔细观察实 验过程中的现象变化；","③ 经过一段时间的反应后，停止加热，待装置冷却至室温后，再 次进行称量并记录所得到的质量数据。","现象 红色固体粉末在反应过程中逐渐转变为黑色；","气球先膨胀后缩小。","气球的作用 形成密闭体系，同时缓冲气压。","实验步骤 ② 然后，取下锥形瓶，倾斜使小试管中的 CuSO4 与铁丝发生反 应，同时仔细观察实验过程中的现象变化；","③ 经过一段时间的反应后，再次将锥形瓶放回天平上进行称量， 并记录所得到的质量数据。","现象 实验步骤 ② 随后取下烧杯，将烧杯倾斜，使稀盐酸与 Na2CO3 接触并发 生反应。在此过程中，仔细观察并记录现象变化，特别是注意 产生的气体;","③ 待反应一段时间后，再次将烧杯放回天平上进行称量，并记录 所得到的质量数据。","实验步骤 ② 接着，用坩埚钳夹持镁条，将其置于酒精灯上点燃，并仔细 观察反应现象；","③ 在镁条燃烧完毕后，将生成的白色固体与陶土网一同放回天 平上进行称量，并再次记录质量数据。"],"实验结论":["反应前各物质的总质量等于反应后各物质的总质量。","实验准确的 关键 装置不漏气。","实验二：铁与硫酸铜反应","在反应过程中，铁丝表面逐渐析出红色的固体物质;","原本蓝色的硫酸铜溶液逐渐变为浅绿色。","反应前各物质的总质量等于反应后各物质的总质量。","实验三：稀盐酸与 Na2CO3 反应"],"实验现象":[" Na2CO3 固体逐渐溶解，同时溶液中产生大量气泡；"," 反应结束后，再次称量时，天平向右倾斜。","反应前各物质的总质量大于反应后各物质的总质量。","实验结果 m（反应前）= m（反应后） + m（生成的 CO2） 实验结果 镁条剧烈燃烧，发出耀眼的白光，并伴有白烟，最终生成白色固 体。","反应前各物质的总质量不等于反应后各物质的总质量。"," 反应后的质量比反应前的大，原因：增加了参与反应的氧气 的质量；","结果分析","反应后的质量比反应前的小，原因：镁条燃烧产生的白烟散 落在空气中；","◼ 反应后的质量与反应前的一致，原因：增加的氧气质量与减 少的白烟质量一样。"],"原因分析":["改进方法 反应生成的 CO2 气体逸散到空气中，使反应后的总质量减少。","改在密闭容器中进行，并将产生的 CO2 气体吸收（ CO2 气体不 吸收会产生浮力，使实验结果不准）。","实验四：镁与氧气反应"]}},{"title":"实验十、木炭的还原性","blocks":{"化学方程式":["灯罩的作用 澄清石灰水 的作用 聚拢火焰，使温度更高，简单的说就是为了提高温度。","检验生成的气体；","现象：澄清的石灰水变浑浊。","化学方程式："," 加热一段时间后，① 中黑色粉末中出现红色物质；"," ② 中产生气泡，澄清的石灰水变浑浊。"],"实验现象":["注意：刚开始预热，试管 ② 中立即产生气泡，但石灰水不变 浑浊，原因是试管 ① 中的空气受热膨胀进入试管 ② 中产生 气泡。"],"注意事项":["◼ 反应结束后，应该先撤去导管后熄火酒精灯，防止发生倒吸；","接着用弹簧夹夹紧橡皮管，待试管 ① 冷却后再把试管里的粉 末倒出,必须要密封的原因是防止灼热的铜又被氧气氧化成氧 化铜。","注意 木炭是混合物。"]}},{"title":"实验十一、探究二氧化碳的性质","blocks":{"要点":["（一）密度实验 操作 向装有高低蜡烛的烧杯中倾倒二氧化碳。","现象 下层蜡烛先熄灭，上层蜡烛后熄灭。","化学性质：CO2 不燃烧，也不支持燃烧。","结论 物理性质：CO2 的密度比空气大。","（二）溶解性 操作 向一个收集满二氧化碳气体的质地较软的塑料瓶中加入约 1/3 体积的水，立即旋紧瓶盖，振荡，观察现象。","现象 塑料瓶变瘪。","结论 物理性质：CO2 能溶于水。","（三）与 H2O 反应","取三朵用石蕊溶液染成紫色的干燥纸花，向第一朵喷 水（I）；","将第二朵放入盛满 CO2 的集气瓶中（II）；","操作","将第三朵喷水后，再放入盛满 CO2 的集气瓶中（III）， 观察三朵纸花的颜色变化；","最后，将第三朵纸花取出，小心地用吹风机吹干，观察 现象。","I：纸花不变色 分析：水不能使紫色石蕊变红。","II：纸花不变色 分析：CO2 不能使紫色石蕊变红。","现象 III：纸花变红 分析：CO2 和 H2O 反应生成 H2CO3，H2CO3 能使石蕊溶 液变红。","吹干第三朵纸花：纸花变紫 分析：碳酸易分解。","结论 CO2 能与 H2O 反应生成 H2CO3，化学方程式："," H2CO3 能够使紫色石蕊溶液变红；","同 时 ， H2CO3 不 稳 定 ， 易 分 解 ， 化 学 方 程 式 ："]}},{"title":"实验十二、二氧化碳的实验室制取","blocks":{"化学方程式":["块状大理石或石灰石（主要成分为 CaCO3）与稀盐酸。","注意：稀盐酸不能用稀硫酸替代，因为反应会生成微溶于水的 药品 硫酸钙，附着在大理石表面，阻止反应的进行；","也不使用粉末状的 CaCO3 或 Na2CO3，因为反应速率过快， 不便于收集产生的气体。"],"实验现象":["固体逐渐溶解，有大量气泡产生 收集方法 向上排空气法（因为 CO2 能溶于水，因此不能用排水法）  长颈漏斗下端要伸入液面以下，形成液封，防止气体从长颈漏"],"注意事项":["斗中逸出  导管要接近集气瓶底，力争排尽集气瓶内的空气，使收集的气 体更纯净 验满方法 将燃着的木条放在集气瓶口，木条熄灭，则说明 CO2 已经集满。","检验方法 将气体通入澄清的石灰水中，若变浑浊，说明气体为 CO2。"," 化学方程式："]}},{"title":"实验十三、探究燃烧的条件","blocks":{"要点":[" 可燃物；","燃烧的三要素  氧气（或空气）；"," 达到燃烧所需的最低温度（着火点）。","实验 I：铜片上的白磷燃烧，红磷不燃烧；水中的白磷不燃烧。"],"实验现象":["实验 II：水中的白磷燃烧。","实验 I 中："," 铜片上红磷不燃烧，说明燃烧要温度达到可燃物的着火 点；"],"原因分析":[" 水中的白磷不燃烧，说明燃烧要可燃物与氧气接触。","实验 II 中："," 水中的白磷燃烧的原因是：水中的白磷接触氧气且温度达 到可燃物的着火点。","说明 白磷着火点 40 ℃ 左右；红磷着火点 260 ℃ 左右。"]}},{"title":"实验十四、探究金属的活动性顺序","blocks":{"要点":["① 将一根用砂纸打磨过的铝丝浸入 CuSO4 溶液中，过一会儿取 出，观察现象。","② 将一根洁净的铜丝浸入 AgNO3 溶液中，过一会儿取出，观察"],"实验操作":["现象。","③ 将一根洁净的铜丝浸入 Al2(SO4)3 溶液中，过一会儿取出，观 察现象。","说明：砂纸打磨铝丝的目的是出去铝表面的氧化薄膜 ① 铝丝表面出现红色固体，溶液由蓝色变为无色。"],"实验现象":["② 铜丝表面出现银白色固体，溶液由无色变为蓝色。","③ 无变化。"],"化学方程式":["金属活动性顺序：Al > Cu > Ag"],"实验结论":["说明 实验 ① 或实验 ③ 不用做，也可以比较出三种金属的活动性顺 序。"]}},{"title":"实验十五、探究铁钉生锈的条件","blocks":{"要点":["铁锈的主要 Fe2O3·xH2O 成分"],"实验现象":["A 试管中铁钉生锈；B、C 试管中铁钉无明显变化。"],"化学方程式":["结果分析"],"实验结论":["试管 A 和试管 B 对比说明铁钉生锈需要与氧气接触；","试管 A 和试管 C 对比说明铁钉生锈需要与水接触。","通过比较试管 A、B、C 说明铁钉生锈需要与氧气和水同时接触。","使用蒸馏水的目的：蒸馏水更纯净，可以排除水中其他可溶性杂质 的干扰。","实验分析 煮沸蒸馏水：出去水中溶解的氧气。","B 中植物油的作用：隔绝氧气。","C 中干燥剂（此处为 CaCl2）的作用：吸收空气中的水分。"]}},{"title":"实验十六、一定溶质质量分数 NaCl 溶液的配置","blocks":{"要点":["实验用品 仪器：天平、称量纸、烧杯、玻璃棒、药匙、量筒、胶头滴管、 空试剂瓶、空标签瓶。","药品：NaCl、蒸馏水。","① 计算：配置 50 g 质量分数为 6% 的 NaCl 溶液，需要 NaCl 3 g；水 47 g。","操作步骤 ② 称量：用天平称量所需质量的 NaCl，放入烧杯中；","③ 量取：用量筒（选取量程为 50 mL 的量筒）量取 47 mL 的水， 倒入盛有 NaCl 的烧杯中；","④ 溶解：用玻璃棒搅拌，使 NaCl 溶解。","称量前要将游码调至零点，然后调节天平平衡；"," 称量 NaCl 固体时，应先在左右托盘各放一张质量相等的称量 纸；"],"注意事项":["称量时遵循“左物右码”原则；","量取水读数时，视线要与量筒内液体凹液面的最低处保持水平；","称量结束，砝码放回砝码盒，游码归零；","◼ 配好的溶液需要贴上标签，标签中要包含溶液名称和溶质质量 分数（如：质量分数 6% NaCl 溶液）。","溶质的质量分数增大，主要原因是溶质多了或溶剂少了，具体 有：","① 量好的水倒入烧杯时，有部分洒在了烧杯外；","② 量取水时俯视读数（读数比实际值偏大），造成实际取用的水的 体积比理论值偏小等；","③ 砝码生锈，导致 NaCl 称多了，浓度变大。","造成溶质质量分数偏低的主要原因是溶质少了或溶剂多了，具"],"误差分析":["体有：","① 称量 NaCl 时，违反了“左物右码”的原则，造成实际称取的固体 质量小于理论值；","② 称量好的固体没有全部倒入烧杯，有部分散落在烧杯外或沾在 了纸上；","③ 量取溶剂时仰视读数（读数比实际值偏小），造成实际取用的溶 剂体积比理论值偏大；","④ NaCl 中含有杂质。","用质量分数为 6% 的 NaCl 溶液配置 50 g 质量分数 为 3% 的 NaCl 溶液 稀释前的溶质质量 = 稀释后的溶质质量 依据 需要 6% 的 NaCl 溶液 25 g（以 1 mL = 1 g 计算）；蒸馏水 25 g。","说明 无需用到天平。","造成 3% NaCl 的溶质质量分数偏高：","① 量取浓溶液时仰视读数；","② 量取蒸馏水时俯视读数。"," 造成 3% NaCl 的溶质质量分数偏低：","① 量取浓溶液时俯视读数；","② 量取蒸馏水时仰视读数。","（1）用固体配制溶液的步骤：计算、称量、量取、溶解、装瓶 贴标签。","实验总结 （2）用浓溶液配制稀溶液的步骤：计算、量取、混匀、装瓶贴 标签。","提醒：易潮解或有腐蚀性的药品（如 NaOH）应放在玻璃器皿中称 量。"]}},{"title":"实验十七、粗盐中难溶性杂质的去除","blocks":{"要点":["实验用品 量筒、铁架台（带铁圈）、天平、称量纸、滤纸、火柴。","实验步骤 仪器：烧杯、玻璃棒、蒸发皿、坩埚钳、酒精灯、漏斗、药匙、 药品：粗盐、蒸馏水。","溶解、过滤、蒸发、计算产率。","溶解时，玻璃棒的作用：搅拌、加速溶解；"," 过滤时，玻璃棒的作用：引流，目的是防止液滴飞溅；","蒸发过程中，玻璃棒的作用：搅拌，防止局部过热导致液滴飞 溅；","实验分析 ✓ 蒸发皿里的溶液不能超过其容积的 2/3；","加热过程中要用玻璃棒不断搅拌，当蒸发皿中出现较多固体时 停止加热，利用蒸发皿的余热将其蒸干；","◼ 计算产率时，用玻璃棒转移蒸发皿中的固体转移到称量纸上称 量。","计算公式","精盐产率偏高：","① 过滤时溶液浑浊，未重新过滤，就直接开始蒸发；"],"误差分析":["② 过滤时液面高于滤纸边缘；","③ 滤纸破损；","④ 蒸发时晶体未完全干燥。","精盐产率偏低：","① 溶解过程中，粗盐未完全溶解；","② 蒸发时，未用玻璃棒搅拌，造成液滴飞溅；","③ 蒸发皿中的精盐没有全部转移到纸上称量；","④ 蒸发时待水分完全蒸干时才停止加热，导致精盐颗粒飞溅。","注意 提纯后的精盐仍为混合物（含有 Na2SO4、MgCl2、CaCl2 等杂质）。"]}},{"title":"拓展一、粗盐中可溶性杂质的去除","blocks":{"要点":["物质的分离与提纯的基本方法：先找到被提纯物质与杂质之间 的物理或化学性质的差异与联系，再决定选用何种试剂或操作 方法。","提纯物质的化学方法：指通过发生化反应将混合物分离或除去 其中杂质，以达到提纯的目的。","去除粗盐中的多种可溶性杂质时要注意：","实验思路 ① 加入试剂的先后顺序，前面加入的试剂过量，是为了将杂 质除净，但也会引入新的杂质，因此后续加入的试剂要能 除 去 前 面 所 加 入 的 过 量 的 试 剂 。 过 量 的 BaCl2 可 用","Na2CO3 溶液除去，因而加入试剂时，BaCl2 溶液要加在 Na2CO3 溶液的前面。","② 先加入过量的除杂试剂，当完全沉淀后再过滤，过量的 NaOH 和 Na2CO3 可用稀盐酸除去，向滤液中加入过量 的稀盐酸，最后蒸发可得到较为纯净的 NaCl 固体。","2‒ 操作 ① 目的：除去 Na2SO4 (SO4 )；","操作 ② 目的：除去 MgCl2 (Mg2+)；","步骤分析 操作 ③ 目的：除去 CaCl2 和过量的 BaCl2 （Ca2+ 和 Ba2+）；","操作 ④ 目的：除去过量的 NaOH 和过量的 Na2CO3 （OH‒ 和 2‒ CO3 ）。"],"化学方程式":["试剂顺序 说明 试剂顺序可调换为：②①③④ 或 ①③②④；","◼ 必须保证 BaCl2 溶液在 Na2CO3 溶液之前添加。","加入的稀盐酸是否过量对所得的 NaCl 纯度无影响，因为其具有挥 发性，可在蒸发时除去。"]}},{"title":"拓展二、酸碱中和反应","blocks":{"化学方程式":["① 向稀 NaOH 溶液中滴加酚酞试剂，溶液呈红色；"],"实验操作":["② 再向烧杯中逐滴滴加稀盐酸，并用玻璃棒不断搅拌；","③ 当滴加最后一滴稀盐酸时，溶液由红色变为无色时，说明二者 恰好完全反应。","步骤分析 酚酞试剂的作用：帮助判断反应的发生及进行程度。"," 逐滴加入稀盐酸的目的：防止稀盐酸过量。","边滴边搅拌的目的：使稀盐酸和 NaOH 溶液充分反应。","反应的微观 氢离子和氢氧根离子结合生成水分子。","实质 A 点：pH > 7，溶质为 NaOH；","pH 变化曲 线图 B 点：pH > 7，NaOH 过量，溶质为 NaOH 和 NaCl；","C 点：pH = 7，酸碱恰好完全反应，溶质为 NaCl；","D 点：pH < 7，稀盐酸过量，溶质为 NaCl 和 HCl。"]}},{"title":"拓展三、铁的冶炼","blocks":{"要点":["高炉炼铁 赤铁矿石、焦炭、空气、石灰石等。"," 赤铁矿石的主要成分是：Fe2O3， 含有 SiO2 等杂质。","原料  石灰石（主要成分为 CaCO3）的 作用是：将矿石中的 SiO2 转化 为炉渣。","还原剂 的生成 主要 铁的 反应 生成 炉渣的 形成 侯德榜——制碱法的创新者与民族工业的振兴者 在 20 世纪初的中国，纯碱作为一种重要的化工原料，对于国家工业的发展 具有举足轻重的地位。纯碱，化学名为碳酸钠（化学式为 Na2CO3），广泛应用于","玻璃、肥皂、纺织、造纸、食品加工等众多行业，是现代工业不可或缺的基础材 料。然而，在那个时代，纯碱的生产技术却被西方国家所垄断，严重制约了我国 工业的进步。正是在这样的背景下，侯德榜先生挺身而出，他的发明不仅打破了","技术封锁，更为我国工业的崛起奠定了坚实的基础。","纯碱的作用不可小觑。在玻璃制造中，它是降低硅砂熔点的关键成分，使得 玻璃的生产成为可能；在纺织业中，纯碱用于处理棉纱，提高其质量和光泽；在 造纸业中，它是制浆过程中的重要化学品；在食品工业中，纯碱作为膨松剂，让","食品更加松软可口。可以说，没有纯碱，许多现代工业都将无法正常运转。","国外生产纯碱的主要方法是“索氏制碱法”（又名“氨碱法”），这是一种在 1862 年，比利时化学家欧内斯特·索尔维发明的制碱工艺。索氏制碱法的基本步骤如 下：","1. **原料准备**：索氏制碱法的主要原料是石灰石（CaCO3）和食盐（NaCl）。","石灰石在高温下分解成氧化钙（CaO）和二氧化碳（CO2）。","2. **氨气循环**：将氨气（NH3）溶解在水中形成氨水，然后通入 CO2，生 成碳酸氢铵（NH4HCO3）。","3. **饱和盐水反应**：将饱和食盐水与 NH3 混合，然后通入 CO2，生成碳酸 氢钠（NaHCO3）沉淀。","4. **加热分解**：将 NaHCO3 沉淀过滤、洗涤后加热分解，得到纯碱（Na2CO3） 和 CO2、水蒸气。","5. **氨的回收**：分解过程中释放的 NH3 和水蒸气被冷却回收，重新用于 氨水制备，实现氨的循环使用。","索氏制碱法在当时是一种非常先进的生产纯碱的方法，正因为纯碱的重要性， 西方国家对其生产技术实施了严格封锁，企图通过控制这一基础原料的生产来影 响和控制他国的工业发展，使得包括中国在内的许多国家都无法引进这一技术。","在这样的历史时刻，侯德榜先生深刻意识到，要想摆脱外国的控制，就必须自主 研发出属于中国的制碱技术。","侯德榜（1890——1974）先生出生于福建省福州市，自幼家境贫寒，但他勤 奋好学，成绩优异。在美国麻省理工学院获得博士学位后，他毅然决然地放弃了 国外的优厚待遇，返回祖国，投身于科学研究，立志为国家的强盛贡献自己的智","慧和力量。","面对西方的技术垄断，侯德榜先生没有退缩。他深知，只有突破制碱技术， 才能让中国的工业站起来。经过多年的艰苦研究，终于在 1943 年发明了“侯氏制 碱法（又名“联合制碱法”）”，其核心是在“索氏制碱法”的基础上进行了一系列的","技术创新和改进。这一技术的诞生，不仅打破了西方的技术封锁，更使我国纯碱 产业实现了从无到有的飞跃，提升了我国在国际化工领域的地位。这一技术后来 被多个国家引进，对世界制碱工业的发展产生了重要影响。","以下是侯氏制碱法的具体步骤和特点：","侯氏制碱法的步骤：","1. **原料准备**：与索氏制碱法相似，侯氏制碱法同样使用食盐（NaCl）作 为原料，但侯德榜先生创造性地利用了我国丰富的碱湖卤水，这是一种更为经济 的原料来源。","2. **氨的循环**：首先，将 NH3 溶解在水中形成氨水，然后通过氨水吸收 CO2，生成碳酸氢铵（NH4HCO3）。","3. **饱和盐水反应**：将饱和食盐水与 NH3 混合，通入 CO2，在这一过程 中，碳酸氢钠（NaHCO3）逐渐沉淀出来。","4. **碳酸氢钠的分离与加热**：将生成的 NaHCO3 沉淀过滤、洗涤后，进行 加热分解，得到纯碱（Na2CO3）和 CO2、水蒸气。","5. **氯化铵的回收**：在加热分解过程中，同时产生了氯化铵（NH4Cl），这 是一种重要的氮肥。侯氏制碱法通过冷却回收系统，将 NH4Cl 分离出来，实现了 资源的综合利用。","侯氏制碱法的特点：","**资源综合利用**：侯氏制碱法不仅生产纯碱，还能副产 NH4Cl，实现了资 源的最大化利用，提高了经济效益。","**工艺简化**：侯德榜先生对索氏制碱法的工艺流程进行了简化，减少了设 备投资和能源消耗，使得生产成本大幅下降。","**环境友好**：侯氏制碱法在提高产量的同时，减少了废物排放，更加符合 环保要求。","**适合国情**：侯氏制碱法充分利用了我国的天然碱资源，更加适合中国的 国情。","侯德榜先生的贡献，不仅仅在于他发明了一种新的制碱方法，更在于他激发 了民族自尊心和自信心，为我国民族工业的振兴树立了典范。他的科研精神和爱 国情怀，成为激励无数科研工作者前赴后继、为国家强盛而奋斗的精神力量。","侯德榜先生的生平事迹，是一曲科研报国的赞歌。他创建永利碱厂，亲自授 课培养化工人才，即使在抗日战争的艰难时期，他也毅然投身于国防事业，研制 炸药，为抗战胜利做出了重要贡献。他的一生，是对科学精神的最好诠释，是对","国家利益的无限忠诚。他的事迹告诉我们，只有不断创新，勇于挑战，才能在科 技强国的道路上越走越远。"]}}]
-</script>
-    <script>
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // 表单提交处理
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const alertBox = document.getElementById('formAlert');
-            
-            btn.disabled = true;
-            btn.textContent = '提交中...';
-            
-            // 模拟发送过程
-            setTimeout(() => {
-                btn.disabled = false;
-                btn.textContent = '提交问题';
-                if (alertBox) {
-                    alertBox.style.display = 'block';
-                    alertBox.className = 'form-alert success';
-                    alertBox.textContent = '已收到你的化学问题！我们会尽快为你解答，并可能将答案添加到学习资源中。';
-                }
-                this.reset();
-            }, 800);
-        });
-
-        // --- PDF -> Web: experiment list renderer ---
-        function escapeHtml(str) {
-            return String(str)
-                .replaceAll('&', '&amp;')
-                .replaceAll('<', '&lt;')
-                .replaceAll('>', '&gt;')
-                .replaceAll('"', '&quot;')
-                .replaceAll("'", '&#39;');
-        }
-
-        function renderExperiments() {
-            const dataEl = document.getElementById('experimentData');
-            const listEl = document.getElementById('expList');
-            if (!dataEl || !listEl) return;
-
-            let experiments = [];
-            try {
-                experiments = JSON.parse(dataEl.textContent || '[]');
-            } catch (e) {
-                listEl.innerHTML = '<div class=\"card\"><h3>实验数据加载失败</h3><p class=\"muted\">请检查 index.html 中 experimentData 的 JSON 是否有效。</p></div>';
-                return;
-            }
-
-            const html = experiments.map((exp, idx) => {
-                const title = exp && exp.title ? exp.title : `实验 ${idx + 1}`;
-                const blocks = (exp && exp.blocks) ? exp.blocks : {};
-                const blockHtml = Object.keys(blocks).map(label => {
-                    const items = Array.isArray(blocks[label]) ? blocks[label] : [];
-                    const li = items.map(t => `<li>${escapeHtml(t)}</li>`).join('');
-                    return `
-                        <div class="block">
-                            <div class="block-title">${escapeHtml(label)}</div>
-                            <ul class="block-list">${li}</ul>
-                        </div>
-                    `;
-                }).join('');
-
-                return `
-                    <details class="exp-item">
-                        <summary>${escapeHtml(title)}</summary>
-                        ${blockHtml}
-                    </details>
-                `;
-            }).join('');
-
-            listEl.innerHTML = html || '<div class=\"card\"><h3>暂无实验内容</h3></div>';
-
-            const searchEl = document.getElementById('expSearch');
-            if (searchEl) {
-                const applyFilter = () => {
-                    const q = (searchEl.value || '').trim().toLowerCase();
-                    document.querySelectorAll('.exp-item').forEach(d => {
-                        const text = (d.textContent || '').toLowerCase();
-                        d.style.display = (!q || text.includes(q)) ? '' : 'none';
-                    });
-                };
-                searchEl.addEventListener('input', applyFilter);
-            }
-
-            const expandAllBtn = document.getElementById('expandAll');
-            const collapseAllBtn = document.getElementById('collapseAll');
-            if (expandAllBtn) {
-                expandAllBtn.addEventListener('click', () => {
-                    document.querySelectorAll('.exp-item').forEach(d => d.open = true);
-                });
-            }
-            if (collapseAllBtn) {
-                collapseAllBtn.addEventListener('click', () => {
-                    document.querySelectorAll('.exp-item').forEach(d => d.open = false);
-                });
-            }
-        }
-
-        renderExperiments();
-    </script>
+    <script src="assets/site.js" defer></script>
 </body>
 </html>

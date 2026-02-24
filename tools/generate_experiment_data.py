@@ -129,23 +129,29 @@ def _parse_section(lines: list[str]) -> dict[str, list[str]]:
     return {k: v for k, v in blocks.items() if v}
 
 
-def main() -> None:
-    repo_dir = Path(__file__).resolve().parents[1]
+def generate_sections(repo_dir: Path) -> list[dict[str, object]]:
     pdf_path = repo_dir / PDF_NAME
     if not pdf_path.exists():
-        raise SystemExit(f"PDF not found: {pdf_path}")
+        raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
     lines = _extract_text_from_pdf(pdf_path)
     heads = _find_headings(lines)
-    sections = []
+    sections: list[dict[str, object]] = []
     for idx, (start, title) in enumerate(heads):
         end = heads[idx + 1][0] if idx + 1 < len(heads) else len(lines)
         blocks = _parse_section(lines[start + 1 : end])
         sections.append({"title": title, "blocks": blocks})
+    return sections
 
+
+def main() -> None:
+    repo_dir = Path(__file__).resolve().parents[1]
+    try:
+        sections = generate_sections(repo_dir)
+    except FileNotFoundError as e:
+        raise SystemExit(str(e))
     print(json.dumps(sections, ensure_ascii=False, separators=(",", ":")))
 
 
 if __name__ == "__main__":
     main()
-

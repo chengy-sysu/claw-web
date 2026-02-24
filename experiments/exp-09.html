@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解质量守恒定律：反应前后总质量相等（在密闭或不漏气条件下验证）。">
   <title>实验九、验证质量守恒定律 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="9">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,39 +41,50 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-09.svg" alt="实验九、验证质量守恒定律 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
-        <li>理解质量守恒定律：反应前后总质量相等（在密闭或不漏气条件下）。</li>
+        <li>理解质量守恒定律：反应前后总质量相等（在密闭或不漏气条件下验证）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>化学反应前后，参加反应的各物质质量总和相等。</li>
+        <li>化学反应前后，参加反应的各物质质量总和 = 生成的各物质质量总和。</li>
+<li>本质原因：化学反应前后原子的种类、数目和质量都没有改变。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>称量反应前的总质量；使反应进行；再称量反应后的总质量并比较。</li>
-<li>若反应生成气体，需密闭或将气体吸收，避免“质量变小”的假象。</li>
+        <li>方案一（密闭容器内进行）：称量反应前总质量 → 使反应发生 → 称量反应后总质量 → 比较。</li>
+<li>方案二（有气体生成的反应）：需用密闭容器或增加气球/气体吸收装置，防止气体逸散。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>天平在反应前后保持平衡（密闭条件下）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>出现“反应后质量变小”常因气体逸散；不是质量守恒失效。</li>
-<li>答题模板：改密闭容器 / 增加气体吸收装置（如吸收 CO<sub>2</sub>）。</li>
+        <li>出现“反应后质量变小”的假象：常因生成气体逸散到空气中，不是质量守恒定律失效。</li>
+<li>答题模板：将实验在密闭容器中进行 / 增加气体吸收装置（如用 NaOH 溶液吸收 CO<sub>2</sub>）。</li>
+<li>适合验证的实验：NaOH + CuSO<sub>4</sub>（生成沉淀，无气体逸出，可在敞口容器中验证）。</li>
+<li>不适合敞口验证的实验：Na<sub>2</sub>CO<sub>3</sub> + HCl（生成 CO<sub>2</sub> 气体会逸出）。</li>
+<li>质量守恒定律的“六不变”：原子种类、原子数目、原子质量、元素种类、元素质量、物质总质量。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -126,6 +147,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-08.html">← 实验八、蒸馏操作</a>
             <a class="secondary-button" href="exp-10.html">实验十、木炭的还原性 →</a>
@@ -135,13 +160,13 @@
         <aside class="keybox">
           <h3>本页速览</h3>
           <p class="muted" style="margin-bottom: 0.75rem;">一句话抓住考点：</p>
-          <p style="margin-bottom: 1rem;">理解质量守恒定律：反应前后总质量相等（在密闭或不漏气条件下）。</p>
+          <p style="margin-bottom: 1rem;">理解质量守恒定律：反应前后总质量相等（在密闭或不漏气条件下验证）。</p>
           <h3>自测清单</h3>
           <ul>
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

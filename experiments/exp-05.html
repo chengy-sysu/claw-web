@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="通过电解水认识水的组成：水由氢、氧两种元素组成。">
   <title>实验五、电解水实验 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="5">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,15 +41,16 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-05.svg" alt="实验五、电解水实验 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
@@ -49,35 +60,45 @@
 <details class="exp-block" open>
       <summary>必背方程式</summary>
       <ul class="block-list">
-        <li><span class="chem-eq">2H<sub>2</sub>O → 2H<sub>2</sub> + O<sub>2</sub></span></li>
+        <li><span class="chem-eq">2H<sub>2</sub>O <span class="chem-condition"><span class="cond-text">通电</span><span class="cond-arrow">=====</span></span> 2H<sub>2</sub>↑ + O<sub>2</sub>↑</span></li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>通电分解水：阴极产生 H<sub>2</sub>，阳极产生 O<sub>2</sub>（正氧负氢）。</li>
-<li>理论体积比 V(H<sub>2</sub>):V(O<sub>2</sub>)=2:1；实际因 O<sub>2</sub> 溶于水等略偏差。</li>
+        <li>通电分解水：正极产生 O<sub>2</sub>，负极产生 H<sub>2</sub>（口诀：正氧负氢）。</li>
+<li>理论体积比 V(H<sub>2</sub>):V(O<sub>2</sub>) = 2:1；实际略大于 2:1（因 O<sub>2</sub> 在水中溶解度比 H<sub>2</sub> 大）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>水中加入少量 NaOH 或稀 H<sub>2</sub>SO<sub>4</sub> 增强导电性。</li>
+        <li>水中加入少量 NaOH 或稀 H<sub>2</sub>SO<sub>4</sub> 增强导电性（注意：不能加 NaCl，会电解出 Cl<sub>2</sub>）。</li>
 <li>通电后观察两极产生气泡，比较两侧气体体积。</li>
-<li>检验：H<sub>2</sub> 点燃有“爆鸣”；O<sub>2</sub> 使带火星木条复燃。</li>
+<li>检验：负极气体 H<sub>2</sub> 点燃产生淡蓝色火焰，发出“噗”声；正极气体 O<sub>2</sub> 使带火星木条复燃。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>两极都有气泡产生；负极气体多，正极气体少，体积比约为 2:1。</li>
+<li>负极气体点燃，产生淡蓝色火焰（H<sub>2</sub>）。</li>
+<li>正极气体使带火星木条复燃（O<sub>2</sub>）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>体积比 2:1 与质量比 1:8 都要会。</li>
-<li>电解水属于化学变化。</li>
+        <li>口诀“正氧负氢”：正极产氧气，负极产氢气。</li>
+<li>体积比 V(H<sub>2</sub>):V(O<sub>2</sub>) = 2:1；质量比 m(H<sub>2</sub>):m(O<sub>2</sub>) = 1:8——两个比值都要掌握。</li>
+<li>实验结论：水由氢元素和氧元素组成。推论：水分子由氢原子和氧原子构成。</li>
+<li>电解水属于分解反应，是化学变化——验证了化学变化中分子可分而原子不可分。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>安全提醒</summary>
       <ul class="block-list">
-        <li>检验 H<sub>2</sub> 要少量，远离火源先排尽空气再点燃，防止爆炸。</li>
+        <li>检验 H<sub>2</sub> 纯度：先收集少量 H<sub>2</sub>，用拇指堵住试管口移近火焰，松开，听声音。若发出尖锐爆鸣声说明不纯，需重新收集。纯净的 H<sub>2</sub> 安静燃烧。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -102,6 +123,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-04.html">← 实验四、分子的运动实验</a>
             <a class="secondary-button" href="exp-06.html">实验六、过滤操作 →</a>
@@ -117,7 +142,7 @@
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

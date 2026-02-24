@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="中考化学实验一轮复习：实验原理、操作步骤、现象结论、误差与注意事项，一站复习。">
     <title>中考化学实验复习 - 化学+</title>
     <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+    <a class="skip-link" href="#experiments">跳到实验清单</a>
+
     <!-- 导航栏 -->
-    <nav>
+    <nav aria-label="主导航">
         <div class="container nav-container">
             <div class="logo">化学+</div>
+            <div class="nav-tools">
+                <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+                <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+                <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+                <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+            </div>
+            <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
             <div class="nav-links">
                 <a href="#home">首页</a>
                 <a href="#pdf">PDF</a>
@@ -25,7 +35,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div style="display: flex; align-items: center;">
+            <div class="hero-inner">
                 <div class="hero-content">
                     <h1>中考化学实验一轮复习</h1>
                     <p>把 PDF《化学实验基础知识及课本实验总结》的要点整理成可检索的网页目录：实验原理、操作步骤、现象结论、误差与注意事项，一站复习。</p>
@@ -34,7 +44,7 @@
                         <a href="#experiments" class="secondary-button">直接看实验清单</a>
                     </div>
                 </div>
-                <div class="avatar">🧪</div>
+                <div class="avatar" role="img" aria-label="化学实验">🧪</div>
             </div>
         </div>
     </section>
@@ -65,7 +75,7 @@
             <div class="grid">
                 <div class="card">
                     <h3>实验仪器分类</h3>
-                    <p>按用途梳理常见仪器，知道“用什么、怎么用、为什么这样用”。</p>
+                    <p>按用途梳理常见仪器，知道"用什么、怎么用、为什么这样用"。</p>
                 </div>
                 <div class="card">
                     <h3>常用仪器介绍</h3>
@@ -85,7 +95,7 @@
                 </div>
                 <div class="card">
                     <h3>气体收集方法</h3>
-                    <p>排水法/向上排空气法等：依据“密度 + 溶解性 + 是否与水反应”。</p>
+                    <p>排水法/向上排空气法等：依据"密度 + 溶解性 + 是否与水反应"。</p>
                 </div>
                 <div class="card">
                     <h3>装置与安全</h3>
@@ -102,153 +112,158 @@
     <section id="experiments" class="about">
         <div class="container">
             <h2 class="section-title">教材实验总结（独立页面）</h2>
+            <div class="progress-bar-container">
+                <div id="progressInfo" class="progress-info">已学习 0 / 20 个实验</div>
+                <div class="progress-track"><div id="progressFill" class="progress-fill" style="width: 0%;"></div></div>
+            </div>
             <div class="controls">
-                <input id="expIndexSearch" class="search" type="search" placeholder="搜索实验：例如 氧气 / 过滤 / 二氧化碳 / 误差 / 气密性 …">
+                <input id="expIndexSearch" class="search" type="search" placeholder="搜索实验：例如 氧气 / 过滤 / 二氧化碳 / 误差 / 气密性 …" aria-label="搜索实验">
             </div>
             <p class="muted">每个实验一个页面，更适合课堂讲解、作业布置与学生自测（支持打印/保存）。</p>
             <div id="expCardList" class="grid" style="margin-top: 1.25rem;">
                 <!-- EXPERIMENT_LIST_START -->
-<a class="exp-link card" href="experiments/exp-01.html">
+<a class="exp-link card" href="experiments/exp-01.html" data-exp-id="1">
   <div class="exp-cover">
     <img src="assets/covers/exp-01.svg" alt="实验一、空气中氧气含量的测定 实验装置图" loading="lazy">
   </div>
   <h3>实验一、空气中氧气含量的测定</h3>
   <p>测定空气中氧气约占 1/5，理解“消耗氧气→压强变小→水进入”的思路。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-02.html">
+<a class="exp-link card" href="experiments/exp-02.html" data-exp-id="2">
   <div class="exp-cover">
     <img src="assets/covers/exp-02.svg" alt="实验二、加热高锰酸钾制氧气 实验装置图" loading="lazy">
   </div>
   <h3>实验二、加热高锰酸钾制氧气</h3>
   <p>掌握用 KMnO<sub>4</sub> 加热制氧气的装置、操作顺序与关键注意事项。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-03.html">
+<a class="exp-link card" href="experiments/exp-03.html" data-exp-id="3">
   <div class="exp-cover">
     <img src="assets/covers/exp-03.svg" alt="实验三、分解过氧化氢制取氧气 实验装置图" loading="lazy">
   </div>
   <h3>实验三、分解过氧化氢制取氧气</h3>
   <p>理解“催化分解 H<sub>2</sub>O<sub>2</sub> 制氧气”，会写出检验/验满方法与注意事项。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-04.html">
+<a class="exp-link card" href="experiments/exp-04.html" data-exp-id="4">
   <div class="exp-cover">
     <img src="assets/covers/exp-04.svg" alt="实验四、分子的运动实验 实验装置图" loading="lazy">
   </div>
   <h3>实验四、分子的运动实验</h3>
   <p>用浓氨水的挥发和扩散现象说明：分子在不断运动。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-05.html">
+<a class="exp-link card" href="experiments/exp-05.html" data-exp-id="5">
   <div class="exp-cover">
     <img src="assets/covers/exp-05.svg" alt="实验五、电解水实验 实验装置图" loading="lazy">
   </div>
   <h3>实验五、电解水实验</h3>
   <p>通过电解水认识水的组成：水由氢、氧两种元素组成。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-06.html">
+<a class="exp-link card" href="experiments/exp-06.html" data-exp-id="6">
   <div class="exp-cover">
     <img src="assets/covers/exp-06.svg" alt="实验六、过滤操作 实验装置图" loading="lazy">
   </div>
   <h3>实验六、过滤操作</h3>
   <p>掌握过滤操作要领“一贴二低三靠”，会解释每一点的原因。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-07.html">
+<a class="exp-link card" href="experiments/exp-07.html" data-exp-id="7">
   <div class="exp-cover">
     <img src="assets/covers/exp-07.svg" alt="实验七、自制简易净水器 实验装置图" loading="lazy">
   </div>
   <h3>实验七、自制简易净水器</h3>
   <p>理解简易净水器的各层作用：过滤 + 吸附（活性炭）。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-08.html">
+<a class="exp-link card" href="experiments/exp-08.html" data-exp-id="8">
   <div class="exp-cover">
     <img src="assets/covers/exp-08.svg" alt="实验八、蒸馏操作 实验装置图" loading="lazy">
   </div>
   <h3>实验八、蒸馏操作</h3>
   <p>掌握蒸馏装置与操作：利用沸点不同分离液体混合物。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-09.html">
+<a class="exp-link card" href="experiments/exp-09.html" data-exp-id="9">
   <div class="exp-cover">
     <img src="assets/covers/exp-09.svg" alt="实验九、验证质量守恒定律 实验装置图" loading="lazy">
   </div>
   <h3>实验九、验证质量守恒定律</h3>
-  <p>理解质量守恒定律：反应前后总质量相等（在密闭或不漏气条件下）。</p>
+  <p>理解质量守恒定律：反应前后总质量相等（在密闭或不漏气条件下验证）。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-10.html">
+<a class="exp-link card" href="experiments/exp-10.html" data-exp-id="10">
   <div class="exp-cover">
     <img src="assets/covers/exp-10.svg" alt="实验十、木炭的还原性 实验装置图" loading="lazy">
   </div>
   <h3>实验十、木炭的还原性</h3>
   <p>通过“木炭还原氧化铜”理解还原反应与 CO<sub>2</sub> 的检验。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-11.html">
+<a class="exp-link card" href="experiments/exp-11.html" data-exp-id="11">
   <div class="exp-cover">
     <img src="assets/covers/exp-11.svg" alt="实验十一、探究二氧化碳的性质 实验装置图" loading="lazy">
   </div>
   <h3>实验十一、探究二氧化碳的性质</h3>
   <p>系统梳理 CO<sub>2</sub> 的物理性质与化学性质，并会用实验现象证明。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-12.html">
+<a class="exp-link card" href="experiments/exp-12.html" data-exp-id="12">
   <div class="exp-cover">
     <img src="assets/covers/exp-12.svg" alt="实验十二、二氧化碳的实验室制取 实验装置图" loading="lazy">
   </div>
   <h3>实验十二、二氧化碳的实验室制取</h3>
   <p>掌握实验室制 CO<sub>2</sub>：药品选择、发生装置、收集/验满/检验。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-13.html">
+<a class="exp-link card" href="experiments/exp-13.html" data-exp-id="13">
   <div class="exp-cover">
     <img src="assets/covers/exp-13.svg" alt="实验十三、探究燃烧的条件 实验装置图" loading="lazy">
   </div>
   <h3>实验十三、探究燃烧的条件</h3>
   <p>通过对比实验总结燃烧条件，并能迁移到灭火原理。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-14.html">
+<a class="exp-link card" href="experiments/exp-14.html" data-exp-id="14">
   <div class="exp-cover">
     <img src="assets/covers/exp-14.svg" alt="实验十四、探究金属的活动性顺序 实验装置图" loading="lazy">
   </div>
   <h3>实验十四、探究金属的活动性顺序</h3>
   <p>用置换反应判断金属活动性强弱，学会用现象推断结论。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-15.html">
+<a class="exp-link card" href="experiments/exp-15.html" data-exp-id="15">
   <div class="exp-cover">
     <img src="assets/covers/exp-15.svg" alt="实验十五、探究铁钉生锈的条件 实验装置图" loading="lazy">
   </div>
   <h3>实验十五、探究铁钉生锈的条件</h3>
   <p>探究铁生锈条件：水和氧气缺一不可；理解防锈方法。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-16.html">
+<a class="exp-link card" href="experiments/exp-16.html" data-exp-id="16">
   <div class="exp-cover">
-    <img src="assets/covers/exp-16.svg" alt="实验十六、一定溶质质量分数 NaCl 溶液的配置 实验装置图" loading="lazy">
+    <img src="assets/covers/exp-16.svg" alt="实验十六、一定溶质质量分数 NaCl 溶液的配制 实验装置图" loading="lazy">
   </div>
-  <h3>实验十六、一定溶质质量分数 NaCl 溶液的配置</h3>
-  <p>会配制一定溶质质量分数的 NaCl 溶液：计算、称量、溶解、定容/定质量。</p>
+  <h3>实验十六、一定溶质质量分数 NaCl 溶液的配制</h3>
+  <p>会配制一定溶质质量分数的 NaCl 溶液：计算、称量、量取、溶解。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-17.html">
+<a class="exp-link card" href="experiments/exp-17.html" data-exp-id="17">
   <div class="exp-cover">
     <img src="assets/covers/exp-17.svg" alt="实验十七、粗盐中难溶性杂质的去除 实验装置图" loading="lazy">
   </div>
   <h3>实验十七、粗盐中难溶性杂质的去除</h3>
-  <p>去除粗盐中的难溶性杂质：溶解-过滤-蒸发结晶。</p>
+  <p>去除粗盐中的难溶性杂质：溶解→过滤→蒸发结晶。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-18.html">
+<a class="exp-link card" href="experiments/exp-18.html" data-exp-id="18">
   <div class="exp-cover">
     <img src="assets/covers/exp-18.svg" alt="拓展一、粗盐中可溶性杂质的去除 实验装置图" loading="lazy">
   </div>
   <h3>拓展一、粗盐中可溶性杂质的去除</h3>
   <p>去除粗盐中可溶性杂质（如 Mg<sup>2+</sup>、Ca<sup>2+</sup>、SO<sub>4</sub><sup>2-</sup>）：沉淀除杂 + 过滤。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-19.html">
+<a class="exp-link card" href="experiments/exp-19.html" data-exp-id="19">
   <div class="exp-cover">
     <img src="assets/covers/exp-19.svg" alt="拓展二、酸碱中和反应 实验装置图" loading="lazy">
   </div>
   <h3>拓展二、酸碱中和反应</h3>
-  <p>理解酸碱中和：酸 + 碱 -&gt; 盐 + 水；会用指示剂判断终点。</p>
+  <p>理解酸碱中和反应：酸 + 碱 = 盐 + 水；会用指示剂判断终点。</p>
 </a>
-<a class="exp-link card" href="experiments/exp-20.html">
+<a class="exp-link card" href="experiments/exp-20.html" data-exp-id="20">
   <div class="exp-cover">
     <img src="assets/covers/exp-20.svg" alt="拓展三、铁的冶炼 实验装置图" loading="lazy">
   </div>
   <h3>拓展三、铁的冶炼</h3>
-  <p>理解高炉炼铁（模型实验）核心：CO 还原氧化铁生成铁。</p>
+  <p>理解一氧化碳还原氧化铁的实验（模拟炼铁）：CO 的还原性与尾气处理。</p>
 </a>
 <!-- EXPERIMENT_LIST_END -->
+                <div id="noResults" class="no-results">没有找到匹配的实验，请尝试其他关键词。</div>
             </div>
         </div>
     </section>
@@ -281,10 +296,10 @@
             <div class="card" style="max-width: 820px; margin: 0 auto 1.5rem;">
                 <h3>常见问题（先自查）</h3>
                 <ul>
-                    <li>装置气密性：先检漏再点火/加热，避免“现象不出/数据偏差”。</li>
-                    <li>收集气体：看“连续均匀气泡”再收集；验满方法要对应气体性质。</li>
+                    <li>装置气密性：先检漏再点火/加热，避免"现象不出/数据偏差"。</li>
+                    <li>收集气体：看"连续均匀气泡"再收集；验满方法要对应气体性质。</li>
                     <li>加热顺序：先移出导管、后熄灭酒精灯（防倒吸/防炸裂）。</li>
-                    <li>误差题：优先从“漏气、未冷却、药品不足、操作顺序”找原因。</li>
+                    <li>误差题：优先从"漏气、未冷却、药品不足、操作顺序"找原因。</li>
                 </ul>
             </div>
             <form class="contact-form" id="contactForm">

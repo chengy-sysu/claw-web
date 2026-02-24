@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="掌握过滤操作要领“一贴二低三靠”，会解释每一点的原因。">
   <title>实验六、过滤操作 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="6">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,15 +41,16 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-06.svg" alt="实验六、过滤操作 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
@@ -49,23 +60,31 @@
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>过滤用于分离“不溶性固体+液体”的混合物，得到滤液和滤渣。</li>
+        <li>过滤用于分离“不溶性固体+液体”的混合物，得到滤液（液体）和滤渣（固体）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>折叠并放入滤纸，润湿使其贴紧漏斗内壁。</li>
-<li>漏斗尖嘴紧贴烧杯内壁；沿玻璃棒缓慢倒入待过滤液体。</li>
-<li>液面不超过滤纸边缘，避免液体从滤纸与漏斗之间漏出。</li>
+        <li>折叠滤纸放入漏斗，用水润湿使其紧贴漏斗内壁（不留气泡）。</li>
+<li>漏斗下端尖嘴紧贴烧杯内壁；用玻璃棒引流，沿玻璃棒缓慢倒入待过滤液体。</li>
+<li>液面始终低于滤纸边缘，防止液体从滤纸与漏斗间流过未被过滤。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>浑浊液体经过滤后变为澄清透明。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>一贴：滤纸贴紧漏斗内壁（防旁路漏液）。</li>
-<li>二低：滤纸边缘低于漏斗边缘；液面低于滤纸边缘（防未过滤液体溢出）。</li>
-<li>三靠：玻璃棒靠三层一侧；漏斗尖嘴靠烧杯内壁（防液体飞溅）。</li>
+        <li>一贴：滤纸贴紧漏斗内壁（无气泡，加快过滤速度）。</li>
+<li>二低：①滤纸边缘低于漏斗边缘；②液面低于滤纸边缘——防止液体从滤纸上方溢出，过滤不完全。</li>
+<li>三靠：①烧杯口靠玻璃棒（引流）；②玻璃棒靠三层滤纸一侧（防戳破滤纸）；③漏斗下端尖嘴靠烧杯内壁（防止液体飞溅，使液体沿壁流下）。</li>
+<li>如果过滤后滤液仍然浑浊，可能原因：①滤纸破损 ②液面超过滤纸边缘。处理：更换滤纸重新过滤。</li>
+<li>玻璃棒在过滤中的作用：引流。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -94,6 +113,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-05.html">← 实验五、电解水实验</a>
             <a class="secondary-button" href="exp-07.html">实验七、自制简易净水器 →</a>
@@ -109,7 +132,7 @@
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

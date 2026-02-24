@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="通过对比实验总结燃烧条件，并能迁移到灭火原理。">
   <title>实验十三、探究燃烧的条件 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="13">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,15 +41,16 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-13.svg" alt="实验十三、探究燃烧的条件 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
@@ -49,26 +60,38 @@
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>燃烧条件：可燃物、与氧气接触、达到着火点（缺一不可）。</li>
+        <li>燃烧三个条件（缺一不可）：①可燃物 ②与氧气（或空气）接触 ③温度达到可燃物的着火点。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>设计对比：隔绝氧气（盖玻璃罩/用水）、降低温度（移开热源）、移走可燃物。</li>
-<li>观察哪组能燃烧、哪组不能燃烧。</li>
+        <li>实验I：铜片上分别放白磷和红磷，热水中放白磷——观察哪些能燃烧。</li>
+<li>实验II：用导管向热水中的白磷通入氧气——观察白磷能否在水中燃烧。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>实验I：铜片上白磷燃烧（产生白烟），红磷不燃烧，水中白磷不燃烧。</li>
+<li>实验II：通入氧气后，水中白磷燃烧。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>灭火原理：移走可燃物 / 隔绝氧气 / 降低温度到着火点以下。</li>
+        <li>铜片上白磷燃烧、红磷不燃烧——说明燃烧需要温度达到着火点（白磷着火点约 40℃，红磷着火点约 240℃）。</li>
+<li>铜片上白磷燃烧、水中白磷不燃烧——说明燃烧需要与氧气接触。</li>
+<li>水中白磷通入 O<sub>2</sub> 后燃烧——说明只要同时满足三个条件就能燃烧（即使在水中）。</li>
+<li>灭火原理（三选一即可）：①移走可燃物 ②隔绝氧气（或空气）③降温到着火点以下。注意：不能说“降低着火点”——着火点是物质固有属性，不能被降低。</li>
+<li>着火点是物质的固有属性，不能改变——考试中说“降低着火点”是错误表述。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>安全提醒</summary>
       <ul class="block-list">
-        <li>使用酒精灯注意：禁止用嘴吹灭；失火用湿抹布盖灭。</li>
+        <li>白磷有毒且着火点低（约 40℃），操作要小心；白磷着火用沙覆盖灭火。</li>
+<li>酒精灯使用注意：禁止用嘴吹灭（用灯帽盖灭）；酒精灯着火用湿抹布盖灭。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -98,6 +121,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-12.html">← 实验十二、二氧化碳的实验室制取</a>
             <a class="secondary-button" href="exp-14.html">实验十四、探究金属的活动性顺序 →</a>
@@ -113,7 +140,7 @@
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

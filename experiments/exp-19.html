@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解酸碱中和反应：酸 + 碱 = 盐 + 水；会用指示剂判断终点。">
   <title>拓展二、酸碱中和反应 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="19">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,51 +41,66 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-19.svg" alt="拓展二、酸碱中和反应 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
-        <li>理解酸碱中和：酸 + 碱 -&gt; 盐 + 水；会用指示剂判断终点。</li>
+        <li>理解酸碱中和反应：酸 + 碱 = 盐 + 水；会用指示剂判断终点。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>必背方程式</summary>
       <ul class="block-list">
-        <li><span class="chem-eq">HCl + NaOH → NaCl + H<sub>2</sub>O</span></li>
+        <li><span class="chem-eq">HCl + NaOH = NaCl + H<sub>2</sub>O</span></li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>中和反应放热；用指示剂颜色突变判断接近中性时的“终点”。</li>
+        <li>中和反应的实质：H+ + OH- = H<sub>2</sub>O。中和反应放热。</li>
+<li>NaOH 和 HCl 反应无明显现象（均为无色溶液），需要借助指示剂判断反应进程。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>在碱液中滴加指示剂（如酚酞），用滴定管缓慢滴加酸，并不断振荡。</li>
-<li>当颜色刚好褪去/刚好出现且不再恢复时，停止滴加。</li>
+        <li>①在烧杯中倒入一定量的 NaOH 溶液，滴入 2-3 滴酚酞试液，溶液变红。</li>
+<li>②用胶头滴管逐滴滴入稀盐酸，并用玻璃棒不断搅拌（使充分反应）。</li>
+<li>③当滴入最后一滴稀盐酸后溶液由红色恰好变为无色，且半分钟不再变回红色时，说明酸碱恰好完全反应。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>NaOH 溶液中滴入酚酞后变为红色。</li>
+<li>逐滴加入稀盐酸并搅拌，红色逐渐变浅。</li>
+<li>恰好完全反应时，溶液由红色变为无色且不再变回。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>终点判断用语：刚好变色、保持不褪（或不再变回）。</li>
-<li>可解释：滴加过量会导致溶液偏酸/偏碱。</li>
+        <li>选择酚酞而不选石蕊的原因：酚酞在碱性溶液中为红色、中性/酸性为无色，变色点接近中性（pH≈8.2），颜色变化明显易判断。石蕊变色不够灵敏。</li>
+<li>终点判断关键用语：溶液恰好由红色变为无色，且半分钟内不再变回。</li>
+<li>pH 变化分析（常考图像题）：随着加入盐酸，pH 从大于 7 逐渐下降——恰好完全反应时 pH=7——继续加酸 pH&lt;7。</li>
+<li>各点溶质分析：反应前（NaOH）→ 反应中（NaOH + NaCl）→ 恰好反应（NaCl）→ 酸过量（NaCl + HCl）。</li>
+<li>反应实质的微观描述：氢离子（H+）和氢氧根离子（OH-）结合生成水分子。</li>
+<li>逐滴加入稀盐酸的目的：防止盐酸一次加入过多导致酸过量。搅拌的目的：使酸碱充分反应。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>安全提醒</summary>
       <ul class="block-list">
-        <li>酸碱有腐蚀性：滴定操作戴护目镜，溅到立即大量水冲洗。</li>
+        <li>酸碱均有腐蚀性：操作时注意安全，溅到皮肤立即用大量水冲洗。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -102,6 +127,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-18.html">← 拓展一、粗盐中可溶性杂质的去除</a>
             <a class="secondary-button" href="exp-20.html">拓展三、铁的冶炼 →</a>
@@ -111,13 +140,13 @@
         <aside class="keybox">
           <h3>本页速览</h3>
           <p class="muted" style="margin-bottom: 0.75rem;">一句话抓住考点：</p>
-          <p style="margin-bottom: 1rem;">理解酸碱中和：酸 + 碱 -&gt; 盐 + 水；会用指示剂判断终点。</p>
+          <p style="margin-bottom: 1rem;">理解酸碱中和反应：酸 + 碱 = 盐 + 水；会用指示剂判断终点。</p>
           <h3>自测清单</h3>
           <ul>
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

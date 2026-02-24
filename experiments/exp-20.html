@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解一氧化碳还原氧化铁的实验（模拟炼铁）：CO 的还原性与尾气处理。">
   <title>拓展三、铁的冶炼 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="20">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,53 +41,69 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-20.svg" alt="拓展三、铁的冶炼 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
-        <li>理解高炉炼铁（模型实验）核心：CO 还原氧化铁生成铁。</li>
+        <li>理解一氧化碳还原氧化铁的实验（模拟炼铁）：CO 的还原性与尾气处理。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>必背方程式</summary>
       <ul class="block-list">
-        <li><span class="chem-eq">Fe<sub>2</sub>O<sub>3</sub> + 3CO → 2Fe + 3CO<sub>2</sub></span></li>
+        <li><span class="chem-eq">Fe<sub>2</sub>O<sub>3</sub> + 3CO <span class="chem-condition"><span class="cond-text">高温</span><span class="cond-arrow">=====</span></span> 2Fe + 3CO<sub>2</sub></span></li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>CO 有还原性：把铁的氧化物还原为铁，自身被氧化为 CO<sub>2</sub>。</li>
-<li>尾气含 CO/CO<sub>2</sub>：需要处理并防止 CO 中毒。</li>
+        <li>CO 具有还原性：在高温下把 Fe<sub>2</sub>O<sub>3</sub> 还原为 Fe，CO 自身被氧化为 CO<sub>2</sub>。</li>
+<li>尾气中含有未反应的 CO（有毒）和生成的 CO<sub>2</sub>，必须进行尾气处理。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>加热反应物并通入 CO（或由装置产生 CO），观察产物变化；尾气点燃或吸收处理。</li>
-<li>结束时先停止加热，继续通一会儿 CO（或按题意操作）使装置冷却，避免倒吸与氧化。</li>
+        <li>①先通入 CO 一段时间排尽装置中的空气（防止加热时 CO 与空气混合爆炸）。</li>
+<li>②再点燃酒精灯加热 Fe<sub>2</sub>O<sub>3</sub>。</li>
+<li>③观察玻璃管中固体颜色变化和石灰水变化。</li>
+<li>④尾气通过点燃（或用气球收集）处理剩余 CO。</li>
+<li>⑤实验结束：先停止加热，继续通 CO 至装置冷却（防止生成的铁在高温下被空气氧化）。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>红棕色粉末（Fe<sub>2</sub>O<sub>3</sub>）逐渐变为黑色（铁粉）。</li>
+<li>澄清石灰水变浑浊（有 CO<sub>2</sub> 生成）。</li>
+<li>尾气导管口点燃，产生蓝色火焰（CO 燃烧）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>CO 有毒：必须通风、尾气处理（点燃/收集/吸收）。</li>
-<li>操作顺序题：常考“先通气后加热、停火后继续通气一段时间”。</li>
+        <li>操作顺序口诀“先通气后加热，先停止加热后停通气”——这是高频考点。</li>
+<li>先通 CO 的原因：排尽装置中的空气，防止 CO 与空气混合在加热时发生爆炸。</li>
+<li>停止加热后继续通 CO 的原因：防止生成的灼热铁粉被空气中的 O<sub>2</sub> 重新氧化；同时防止石灰水倒吸。</li>
+<li>尾气必须处理（点燃/收集/用气球装）：因为 CO 有毒，不能直接排放到空气中，会造成空气污染。</li>
+<li>CO 有毒：能与血红蛋白结合，使人中毒。实验必须在通风橱或通风良好的地方进行。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>安全提醒</summary>
       <ul class="block-list">
-        <li>严禁在密闭小空间操作；防止 CO 中毒。</li>
-<li>尾气点燃要在导管口处操作，远离易燃物。</li>
+        <li>严禁在密闭小空间操作；必须保证通风或在通风橱内进行。</li>
+<li>尾气必须处理：点燃尾气要在导管口处操作，远离可燃物。</li>
+<li>先通气后加热——不能先加热再通 CO，否则可能爆炸。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -126,6 +152,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-19.html">← 拓展二、酸碱中和反应</a>
             <span class="muted">已是最后一篇</span>
@@ -135,13 +165,13 @@
         <aside class="keybox">
           <h3>本页速览</h3>
           <p class="muted" style="margin-bottom: 0.75rem;">一句话抓住考点：</p>
-          <p style="margin-bottom: 1rem;">理解高炉炼铁（模型实验）核心：CO 还原氧化铁生成铁。</p>
+          <p style="margin-bottom: 1rem;">理解一氧化碳还原氧化铁的实验（模拟炼铁）：CO 的还原性与尾气处理。</p>
           <h3>自测清单</h3>
           <ul>
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

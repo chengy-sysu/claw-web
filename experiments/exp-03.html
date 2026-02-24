@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解“催化分解 H2O2 制氧气”，会写出检验/验满方法与注意事项。">
   <title>实验三、分解过氧化氢制取氧气 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="3">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,15 +41,16 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-03.svg" alt="实验三、分解过氧化氢制取氧气 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
@@ -49,35 +60,44 @@
 <details class="exp-block" open>
       <summary>必背方程式</summary>
       <ul class="block-list">
-        <li><span class="chem-eq">2H<sub>2</sub>O<sub>2</sub> → 2H<sub>2</sub>O + O<sub>2</sub> (MnO<sub>2</sub>)</span></li>
+        <li><span class="chem-eq">2H<sub>2</sub>O<sub>2</sub> <span class="chem-condition"><span class="cond-text">MnO2</span><span class="cond-arrow">=====</span></span> 2H<sub>2</sub>O + O<sub>2</sub>↑</span></li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
         <li>MnO<sub>2</sub> 为催化剂：加快反应速率，自身质量和化学性质不变。</li>
-<li>O<sub>2</sub> 微溶于水，可排水法收集；也可向上排空气法收集。</li>
+<li>O<sub>2</sub> 不易溶于水，可排水法收集；也可向上排空气法收集。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>在锥形瓶中加入 MnO<sub>2</sub>，连接装置并检漏。</li>
-<li>用分液漏斗/长颈漏斗滴加 H<sub>2</sub>O<sub>2</sub>，待连续均匀放气后开始收集。</li>
-<li>收集完毕先移出导管，再停止反应（防倒吸）。</li>
+        <li>在锥形瓶中加入 MnO<sub>2</sub>，连接装置并检查气密性。</li>
+<li>用分液漏斗（可控制速率）或长颈漏斗（下端需伸入液面以下形成液封）滴加 H<sub>2</sub>O<sub>2</sub> 溶液。</li>
+<li>待连续均匀气泡后开始收集。停止滴加 H<sub>2</sub>O<sub>2</sub> 即可停止反应。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>锥形瓶中产生大量气泡。</li>
+<li>用带火星的木条伸入集气瓶中，木条复燃，说明产生的气体是 O<sub>2</sub>。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>检验 O<sub>2</sub>：带火星木条复燃；验满：放在瓶口也复燃。</li>
-<li>如何证明 MnO<sub>2</sub> 化学性质不变：反应停止后再加 H<sub>2</sub>O<sub>2</sub> 仍能放出气体。</li>
+        <li>检验 O<sub>2</sub>：带火星木条伸入瓶中复燃；验满：带火星木条放在瓶口复燃。</li>
+<li>如何证明 MnO<sub>2</sub> 是催化剂——两个实验：①称量反应前后 MnO<sub>2</sub> 质量不变（证明质量不变）；②反应停止后再加 H<sub>2</sub>O<sub>2</sub> 仍能快速产生气体（证明化学性质不变）。</li>
+<li>长颈漏斗下端必须伸入液面以下：形成液封，防止气体从漏斗口逸出。这是装置改进题的高频考点。</li>
+<li>与 KMnO<sub>4</sub> 制 O<sub>2</sub> 对比：H<sub>2</sub>O<sub>2</sub> 法不需加热（固液常温型），操作更简便安全。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>安全提醒</summary>
       <ul class="block-list">
-        <li>H<sub>2</sub>O<sub>2</sub> 有腐蚀性：避免接触皮肤，溅到用大量水冲洗。</li>
+        <li>H<sub>2</sub>O<sub>2</sub> 有一定腐蚀性：避免接触皮肤，溅到用大量水冲洗。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -99,6 +119,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-02.html">← 实验二、加热高锰酸钾制氧气</a>
             <a class="secondary-button" href="exp-04.html">实验四、分子的运动实验 →</a>
@@ -114,7 +138,7 @@
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

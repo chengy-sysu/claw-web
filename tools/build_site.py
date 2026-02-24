@@ -125,11 +125,33 @@ def _chem_species_to_html(species: str) -> str:
 def _chem_equation_to_html(eq: str) -> str:
     """
     Convert an equation string into HTML with arrows and formatted species.
-    Expected input uses spaces around '+' and arrows, e.g. '4P + 5O2 -> 2P2O5'.
+    Supported formats:
+      - '4P + 5O2 -> 2P2O5'           (plain arrow)
+      - '4P + 5O2 =[点燃]= 2P2O5'     (arrow with condition above)
+      - '2H2O2 =[MnO2]= 2H2O + O2↑'  (arrow with catalyst above)
+      - 'CO2 + H2O <-> H2CO3'         (reversible)
     """
     s = eq.strip()
     if not s:
         return ""
+
+    # Handle =[condition]= syntax: render as arrow with condition above
+    m = re.search(r'=\[(.+?)\]=', s)
+    if m:
+        condition = _safe(m.group(1))
+        # Replace the =[...]= with a special placeholder
+        arrow_html = f'<span class="chem-condition"><span class="cond-text">{condition}</span><span class="cond-arrow">=====</span></span>'
+        left = s[:m.start()].strip()
+        right = s[m.end():].strip()
+        left_html = _chem_equation_to_html_inner(left)
+        right_html = _chem_equation_to_html_inner(right)
+        return f"{left_html} {arrow_html} {right_html}"
+
+    return _chem_equation_to_html_inner(s)
+
+
+def _chem_equation_to_html_inner(s: str) -> str:
+    """Format the species and operators in a (partial) equation string."""
     s = s.replace("<->", "⇌").replace("<=>", "⇌").replace("->", "→")
     tokens = s.split()
     out = []
@@ -289,13 +311,23 @@ def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPag
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{_safe(short_tip)}">
   <title>{_safe(title)} - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="{page.index}">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -315,18 +347,23 @@ def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPag
         <div>
           <h2 class="section-title" style="text-align:left; margin-bottom: 1rem;">{_safe(title)}</h2>
           {cover_html}
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             {notes_html}
             {pdf_html}
           </section>
+
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
 
           <div class="nav-prev-next">
             {prev_link}
@@ -343,7 +380,7 @@ def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPag
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>
@@ -378,7 +415,7 @@ def _update_index_experiment_list(index_html: str, pages: list[ExpPage]) -> str:
             tip = _extract_short_tip(p.blocks)
         cover_src = f"assets/covers/exp-{p.index:02d}.svg"
         cards.append(
-            f'''<a class="exp-link card" href="experiments/{_safe(p.filename)}">
+            f'''<a class="exp-link card" href="experiments/{_safe(p.filename)}" data-exp-id="{p.index}">
   <div class="exp-cover">
     <img src="{_safe(cover_src)}" alt="{_safe(_normalize_title(p.title))} 实验装置图" loading="lazy">
   </div>
@@ -403,9 +440,16 @@ def main() -> None:
     out_dir = repo_dir / "experiments"
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # Fix known title errors from PDF extraction
+    title_fixups = {
+        "配置": "配制",  # 实验十六 "配置" should be "配制"
+    }
+
     pages: list[ExpPage] = []
     for i, sec in enumerate(sections, start=1):
         title = str(sec.get("title") or f"实验 {i}")
+        for wrong, right in title_fixups.items():
+            title = title.replace(wrong, right)
         blocks = sec.get("blocks") or {}
         if not isinstance(blocks, dict):
             blocks = {}
@@ -413,7 +457,10 @@ def main() -> None:
         blocks2: dict[str, list[str]] = {}
         for k, v in blocks.items():
             if isinstance(v, list):
-                blocks2[str(k)] = [str(x) for x in v if str(x).strip()]
+                items = [str(x) for x in v if str(x).strip()]
+                for wrong, right in title_fixups.items():
+                    items = [item.replace(wrong, right) for item in items]
+                blocks2[str(k)] = items
         pages.append(
             ExpPage(
                 index=i,

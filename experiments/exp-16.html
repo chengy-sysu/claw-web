@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>实验十六、一定溶质质量分数 NaCl 溶液的配置 - 化学+</title>
+  <meta name="description" content="会配制一定溶质质量分数的 NaCl 溶液：计算、称量、量取、溶解。">
+  <title>实验十六、一定溶质质量分数 NaCl 溶液的配制 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="16">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -22,49 +32,62 @@
   <main class="page">
     <div class="container">
       <div class="breadcrumbs">
-        <a href="../index.html#experiments">实验目录</a> / <span>实验十六、一定溶质质量分数 NaCl 溶液的配置</span>
+        <a href="../index.html#experiments">实验目录</a> / <span>实验十六、一定溶质质量分数 NaCl 溶液的配制</span>
       </div>
 
       <div class="two-col">
         <div>
-          <h2 class="section-title" style="text-align:left; margin-bottom: 1rem;">实验十六、一定溶质质量分数 NaCl 溶液的配置</h2>
+          <h2 class="section-title" style="text-align:left; margin-bottom: 1rem;">实验十六、一定溶质质量分数 NaCl 溶液的配制</h2>
           <div class="exp-cover large">
-        <img src="../assets/covers/exp-16.svg" alt="实验十六、一定溶质质量分数 NaCl 溶液的配置 实验装置图" loading="lazy">
+        <img src="../assets/covers/exp-16.svg" alt="实验十六、一定溶质质量分数 NaCl 溶液的配制 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
-        <li>会配制一定溶质质量分数的 NaCl 溶液：计算、称量、溶解、定容/定质量。</li>
+        <li>会配制一定溶质质量分数的 NaCl 溶液：计算、称量、量取、溶解。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>溶质质量分数 w = m(溶质) / m(溶液) * 100%。</li>
+        <li>溶质质量分数 w = m(溶质) / m(溶液) × 100%。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>计算所需 NaCl 和水的质量（或体积，按题目给定）。</li>
-<li>称量 NaCl；加水溶解并充分搅拌；转移并洗涤，最后定容/定质量。</li>
-<li>贴标签保存。</li>
+        <li>①计算：算出所需 NaCl 和水的质量（例：配 50g 6% NaCl 溶液，需 NaCl 3g，水 47g 即 47mL）。</li>
+<li>②称量：用托盘天平称量 NaCl（左物右码），称量纸放在左右两盘。</li>
+<li>③量取：用量筒量取所需水的体积（选择略大于量取体积的量筒），用胶头滴管精确到刻度。</li>
+<li>④溶解：将 NaCl 倒入烧杯，加入量取的水，用玻璃棒搅拌至完全溶解。</li>
+<li>⑤装瓶贴标签：将配好的溶液转移到试剂瓶中，贴上标签（注明溶液名称和溶质质量分数）。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>NaCl 固体溶于水后，烧杯中得到无色透明的溶液。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>易错：转移损失会导致浓度偏小；蒸发或加水过量会改变浓度。</li>
-<li>题目问“偏大/偏小”常从：称量、转移、定容读数、蒸发损失分析。</li>
+        <li>溶质质量分数偏小的原因：①NaCl 不纯（含杂质）②称量时药品与砝码放反（左码右物），实际称取量偏小 ③转移时有 NaCl 洒落 ④量取水时仰视读数（读数偏小，实际量取偏多）。</li>
+<li>溶质质量分数偏大的原因：①量取水时俯视读数（读数偏大，实际量取偏少）②倒水时有水洒出 ③砝码生锈导致 NaCl 称多。</li>
+<li>量筒读数规范：视线应与量筒内液体凹液面的最低处保持水平。</li>
+<li>天平使用：先调零、再调平；左物右码；称量结束砝码放回砝码盒、游码归零。</li>
+<li>易潮解或腐蚀性药品（如 NaOH）应放在玻璃器皿（小烧杯）中称量，不能放在纸上。</li>
+<li>玻璃棒在溶解中的作用：搅拌，加速溶解。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -74,7 +97,7 @@
   <h3 style="margin-bottom: 0.5rem;">要点</h3>
   <ul class="block-list"><li>实验用品 仪器：天平、称量纸、烧杯、玻璃棒、药匙、量筒、胶头滴管、 空试剂瓶、空标签瓶。</li>
 <li>药品：NaCl、蒸馏水。</li>
-<li>① 计算：配置 50 g 质量分数为 6% 的 NaCl 溶液，需要 NaCl 3 g；水 47 g。</li>
+<li>① 计算：配制 50 g 质量分数为 6% 的 NaCl 溶液，需要 NaCl 3 g；水 47 g。</li>
 <li>操作步骤 ② 称量：用天平称量所需质量的 NaCl，放入烧杯中；</li>
 <li>③ 量取：用量筒（选取量程为 50 mL 的量筒）量取 47 mL 的水， 倒入盛有 NaCl 的烧杯中；</li>
 <li>④ 溶解：用玻璃棒搅拌，使 NaCl 溶解。</li>
@@ -100,7 +123,7 @@
 <li>② 称量好的固体没有全部倒入烧杯，有部分散落在烧杯外或沾在 了纸上；</li>
 <li>③ 量取溶剂时仰视读数（读数比实际值偏小），造成实际取用的溶 剂体积比理论值偏大；</li>
 <li>④ NaCl 中含有杂质。</li>
-<li>用质量分数为 6% 的 NaCl 溶液配置 50 g 质量分数 为 3% 的 NaCl 溶液 稀释前的溶质质量 = 稀释后的溶质质量 依据 需要 6% 的 NaCl 溶液 25 g（以 1 mL = 1 g 计算）；蒸馏水 25 g。</li>
+<li>用质量分数为 6% 的 NaCl 溶液配制 50 g 质量分数 为 3% 的 NaCl 溶液 稀释前的溶质质量 = 稀释后的溶质质量 依据 需要 6% 的 NaCl 溶液 25 g（以 1 mL = 1 g 计算）；蒸馏水 25 g。</li>
 <li>说明 无需用到天平。</li>
 <li>造成 3% NaCl 的溶质质量分数偏高：</li>
 <li>① 量取浓溶液时仰视读数；</li>
@@ -116,6 +139,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-15.html">← 实验十五、探究铁钉生锈的条件</a>
             <a class="secondary-button" href="exp-17.html">实验十七、粗盐中难溶性杂质的去除 →</a>
@@ -125,13 +152,13 @@
         <aside class="keybox">
           <h3>本页速览</h3>
           <p class="muted" style="margin-bottom: 0.75rem;">一句话抓住考点：</p>
-          <p style="margin-bottom: 1rem;">会配制一定溶质质量分数的 NaCl 溶液：计算、称量、溶解、定容/定质量。</p>
+          <p style="margin-bottom: 1rem;">会配制一定溶质质量分数的 NaCl 溶液：计算、称量、量取、溶解。</p>
           <h3>自测清单</h3>
           <ul>
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

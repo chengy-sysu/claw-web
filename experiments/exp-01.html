@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="测定空气中氧气约占 1/5，理解“消耗氧气→压强变小→水进入”的思路。">
   <title>实验一、空气中氧气含量的测定 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="1">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,15 +41,16 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-01.svg" alt="实验一、空气中氧气含量的测定 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
@@ -49,7 +60,7 @@
 <details class="exp-block" open>
       <summary>必背方程式</summary>
       <ul class="block-list">
-        <li><span class="chem-eq">4P + 5O<sub>2</sub> → 2P<sub>2</sub>O<sub>5</sub></span></li>
+        <li><span class="chem-eq">4P + 5O<sub>2</sub> <span class="chem-condition"><span class="cond-text">点燃</span><span class="cond-arrow">=====</span></span> 2P<sub>2</sub>O<sub>5</sub></span></li>
       </ul>
     </details>
 <details class="exp-block" open>
@@ -63,29 +74,38 @@
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
         <li>先检查装置气密性；集气瓶内预先加少量水（吸收 P<sub>2</sub>O<sub>5</sub>、降温）。</li>
-<li>点燃足量红磷，迅速塞紧橡皮塞，夹紧止水夹。</li>
-<li>红磷熄灭后必须冷却到室温，再打开止水夹读数。</li>
+<li>用酒精灯点燃足量红磷，迅速伸入瓶中并塞紧橡皮塞，夹紧止水夹。</li>
+<li>红磷熄灭后必须冷却到室温，再打开止水夹，观察水面上升至约 1/5 处。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>红磷燃烧产生大量白烟，放出热量。</li>
+<li>冷却后打开止水夹，烧杯中的水沿导管进入集气瓶，液面上升约 1/5。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>为什么选红磷：能在空气中燃烧、生成固体、基本不与 N<sub>2</sub>/CO<sub>2</sub> 反应。</li>
-<li>结果偏小常见原因：漏气、未冷却就读数、红磷不足、导管残留水。</li>
-<li>结果偏大常见原因：塞子塞得慢/伸入慢导致热空气外逸、止水夹未夹紧。</li>
+        <li>为什么选红磷：能在空气中燃烧、生成固体（不是气体）、不与 N<sub>2</sub>/CO<sub>2</sub> 反应。不选木炭/硫（产物是气体，不能形成压强差）；不选铁丝（不能在空气中燃烧）；不选镁条（能与 N<sub>2</sub>、CO<sub>2</sub> 反应）。</li>
+<li>结果偏小常见原因：①装置漏气 ②未冷却到室温就读数 ③红磷量不足，O<sub>2</sub> 未耗尽 ④导管中有水残留。</li>
+<li>结果偏大常见原因：①点燃红磷后伸入太慢，瓶内空气受热膨胀逸出 ②塞橡皮塞时动作太慢，部分热空气外逸。</li>
+<li>集气瓶内剩余气体主要是 N<sub>2</sub>：不燃烧、不支持燃烧、难溶于水、不与水反应。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>安全提醒</summary>
       <ul class="block-list">
-        <li>P<sub>2</sub>O<sub>5</sub> 有刺激性：瓶内少量水用于吸收，实验后及时通风。</li>
+        <li>P<sub>2</sub>O<sub>5</sub> 有刺激性：瓶内少量水用于吸收 P<sub>2</sub>O<sub>5</sub> 防止污染空气，同时有降温作用。实验后及时通风。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>自测清单</summary>
       <ul class="block-list">
-        <li>我能用一句话说清：为什么水会上升吗？</li>
-<li>我能列出 2 个“偏小”原因并解释吗？</li>
+        <li>我能说清为什么水会上升吗？（红磷燃烧消耗 O<sub>2</sub>，瓶内压强减小，大气压将水压入瓶中）</li>
+<li>我能列出 2 个“偏小”和 2 个“偏大”原因并解释吗？</li>
+<li>为什么不能用木炭/硫/铁丝/镁条替代红磷？</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -147,6 +167,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <span class="muted">已是第一篇</span>
             <a class="secondary-button" href="exp-02.html">实验二、加热高锰酸钾制氧气 →</a>
@@ -162,7 +186,7 @@
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

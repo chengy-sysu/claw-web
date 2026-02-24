@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="理解简易净水器的各层作用：过滤 + 吸附（活性炭）。">
   <title>实验七、自制简易净水器 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="7">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,15 +41,16 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-07.svg" alt="实验七、自制简易净水器 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
@@ -49,7 +60,7 @@
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>过滤除去不溶性杂质；活性炭吸附色素和异味。</li>
+        <li>过滤除去不溶性杂质（泥沙等）；活性炭利用吸附性除去色素和异味。</li>
       </ul>
     </details>
 <details class="exp-block" open>
@@ -60,10 +71,18 @@
       </ul>
     </details>
 <details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>浑浊的水经净水器后变为较澄清、无异味的水。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>细沙/粗沙/棉花：过滤；活性炭：吸附（脱色、除味）。</li>
-<li>净水器得到的水通常仍需“煮沸消毒”才能饮用。</li>
+        <li>细沙/粗沙/棉花/纱布：过滤作用（除去不溶性杂质）。</li>
+<li>活性炭：吸附作用（脱色、除味），利用的是活性炭的吸附性（物理变化）。</li>
+<li>净水器得到的水仍含可溶性杂质，不是纯水，仍需“煮沸消毒”才能饮用。</li>
+<li>净水程度排序：沉淀 &lt; 过滤 &lt; 吸附 &lt; 蒸馏。蒸馏得到的水是纯净物。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -78,6 +97,10 @@
       </div>
     </details>
           </section>
+
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
 
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-06.html">← 实验六、过滤操作</a>
@@ -94,7 +117,7 @@
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="掌握实验室制 CO2：药品选择、发生装置、收集/验满/检验。">
   <title>实验十二、二氧化碳的实验室制取 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="12">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,15 +41,16 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-12.svg" alt="实验十二、二氧化碳的实验室制取 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
@@ -49,33 +60,49 @@
 <details class="exp-block" open>
       <summary>必背方程式</summary>
       <ul class="block-list">
-        <li><span class="chem-eq">CaCO<sub>3</sub> + 2HCl → CaCl<sub>2</sub> + H<sub>2</sub>O + CO<sub>2</sub>↑</span></li>
+        <li><span class="chem-eq">CaCO<sub>3</sub> + 2HCl = CaCl<sub>2</sub> + H<sub>2</sub>O + CO<sub>2</sub>↑</span></li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>碳酸盐与酸反应放出 CO<sub>2</sub>；CO<sub>2</sub> 密度比空气大且能溶于水，通常用向上排空气法收集。</li>
+        <li>碳酸盐与酸反应放出 CO<sub>2</sub>。</li>
+<li>CO<sub>2</sub> 密度比空气大（向上排空气法收集）；CO<sub>2</sub> 能溶于水（不能用排水法收集）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>药品：大理石/石灰石 + 稀盐酸；发生装置：固液不加热（锥形瓶/广口瓶）。</li>
-<li>收集：向上排空气法；验满：瓶口木条熄灭；检验：澄清石灰水变浑浊。</li>
+        <li>药品：块状大理石/石灰石（主要成分 CaCO<sub>3</sub>）+ 稀盐酸。</li>
+<li>发生装置：固液常温型（锥形瓶/广口瓶 + 长颈漏斗/分液漏斗）。</li>
+<li>收集：向上排空气法（导管伸到集气瓶底部，排尽空气）。</li>
+<li>验满：将燃着的木条放在瓶口，木条熄灭则说明已满。</li>
+<li>检验：将气体通入澄清石灰水，变浑浊则为 CO<sub>2</sub>。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>大理石（石灰石）表面产生大量气泡，固体逐渐变小。</li>
+<li>将燃着的木条放在集气瓶口，木条熄灭（验满）。</li>
+<li>气体通入澄清石灰水，石灰水变浑浊（检验）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>不用浓盐酸：挥发 HCl 气体导致 CO<sub>2</sub> 不纯。</li>
-<li>不用稀硫酸：生成难溶 CaSO<sub>4</sub> 覆盖表面使反应停止。</li>
+        <li>不用浓盐酸：浓盐酸具有挥发性，挥发出的 HCl 气体会使 CO<sub>2</sub> 不纯。</li>
+<li>不用稀硫酸：生成微溶于水的 CaSO<sub>4</sub> 覆盖在大理石表面，阻止反应继续进行。</li>
+<li>不用碳酸钠粉末（Na<sub>2</sub>CO<sub>3</sub>）：反应速率过快，不便于收集气体。</li>
+<li>长颈漏斗下端必须伸入液面以下——形成液封，防止 CO<sub>2</sub> 从漏斗口逸出。</li>
+<li>CO<sub>2</sub> 不能用排水法收集——因为 CO<sub>2</sub> 能溶于水。</li>
+<li>验满方法是将燃着的木条放在瓶口（不是伸入瓶中）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>安全提醒</summary>
       <ul class="block-list">
-        <li>酸具有腐蚀性：取用遵守规则，溅到用大量水冲洗。</li>
+        <li>稀盐酸具有腐蚀性：取用时遵守操作规范，溅到皮肤用大量水冲洗。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -101,6 +128,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-11.html">← 实验十一、探究二氧化碳的性质</a>
             <a class="secondary-button" href="exp-13.html">实验十三、探究燃烧的条件 →</a>
@@ -116,7 +147,7 @@
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

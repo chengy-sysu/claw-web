@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="用置换反应判断金属活动性强弱，学会用现象推断结论。">
   <title>实验十四、探究金属的活动性顺序 - 化学+</title>
   <link rel="stylesheet" href="../assets/site.css">
 </head>
-<body>
-  <nav>
+<body data-exp-id="14">
+  <a class="skip-link" href="#exp-content">跳到实验内容</a>
+
+  <nav aria-label="主导航">
     <div class="container nav-container">
       <div class="logo">化学+</div>
+      <div class="nav-tools">
+        <button class="font-btn" data-font="font-sm" type="button" aria-label="小字体">A-</button>
+        <button class="font-btn" data-font="font-md" type="button" aria-label="中字体">A</button>
+        <button class="font-btn" data-font="font-lg" type="button" aria-label="大字体">A+</button>
+        <button id="themeToggle" type="button" aria-label="切换亮色/暗色模式">亮色</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">☰</button>
       <div class="nav-links">
         <a href="../index.html#home">首页</a>
         <a href="../index.html#pdf">PDF</a>
@@ -31,15 +41,16 @@
           <div class="exp-cover large">
         <img src="../assets/covers/exp-14.svg" alt="实验十四、探究金属的活动性顺序 实验装置图" loading="lazy">
       </div>
-          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读“实验原理”，再背“操作顺序”，最后用“误差分析/注意事项”拿分。</p>
+          <p class="muted" style="margin-bottom: 1rem;">来自 PDF《化学实验基础知识及课本实验总结》的整理。建议：先读"实验原理"，再背"操作顺序"，最后用"误差分析/注意事项"拿分。</p>
 
           <div class="controls">
             <button id="expandAll" class="pill" type="button">全部展开</button>
             <button id="collapseAll" class="pill" type="button">全部收起</button>
+            <button id="quizMode" class="pill" type="button">自测模式</button>
             <button id="printPage" class="pill" type="button">打印/保存 PDF</button>
           </div>
 
-          <section class="grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <section id="exp-content" class="grid" style="grid-template-columns: 1fr; gap: 12px;">
             <details class="exp-block" open>
       <summary>实验目标</summary>
       <ul class="block-list">
@@ -47,30 +58,51 @@
       </ul>
     </details>
 <details class="exp-block" open>
+      <summary>必背方程式</summary>
+      <ul class="block-list">
+        <li><span class="chem-eq">2Al + 3CuSO<sub>4</sub> = Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> + 3Cu</span></li>
+<li><span class="chem-eq">Cu + 2AgNO<sub>3</sub> = Cu(NO<sub>3</sub>)<sub>2</sub> + 2Ag</span></li>
+<li><span class="chem-eq">Fe + CuSO<sub>4</sub> = FeSO<sub>4</sub> + Cu</span></li>
+      </ul>
+    </details>
+<details class="exp-block" open>
       <summary>核心原理</summary>
       <ul class="block-list">
-        <li>较活泼金属能从盐溶液中置换出较不活泼金属。</li>
-<li>常见现象：金属表面析出新金属、溶液颜色变化。</li>
+        <li>较活泼金属能从较不活泼金属的盐溶液中置换出该金属（金属活动性顺序表中排在前面的能置换后面的）。</li>
+<li>常见现象：金属表面析出新金属（颜色变化）、溶液颜色变化。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>关键步骤（怎么做）</summary>
       <ul class="block-list">
-        <li>将 Fe、Zn、Cu 等分别加入 CuSO<sub>4</sub>、FeSO<sub>4</sub> 等溶液中，观察变化并比较。</li>
-<li>写出发生反应的化学方程式（若题目要求）。</li>
+        <li>①将砂纸打磨过的铝丝放入 CuSO<sub>4</sub> 溶液中，观察现象。</li>
+<li>②将洁净铜丝放入 AgNO<sub>3</sub> 溶液中，观察现象。</li>
+<li>③将洁净铜丝放入 Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> 溶液中，观察现象（作对照）。</li>
+      </ul>
+    </details>
+<details class="exp-block" open>
+      <summary>现象（看到什么）</summary>
+      <ul class="block-list">
+        <li>①铝丝表面出现红色固体，溶液由蓝色变为无色——说明 Al 比 Cu 活泼。</li>
+<li>②铜丝表面出现银白色固体，溶液由无色变为蓝色——说明 Cu 比 Ag 活泼。</li>
+<li>③无明显变化——说明 Cu 不如 Al 活泼（不能置换 Al）。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>高频考点（怎么拿分）</summary>
       <ul class="block-list">
-        <li>结论表达要规范：金属 A 比金属 B 活泼（或活动性强）。</li>
-<li>注意对照实验：变量是“金属种类”或“溶液种类”。</li>
+        <li>金属活动性顺序（常考部分）：K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au。口诀：钾钙钠镁铝 锌铁锡铅氢 铜汞银铂金。</li>
+<li>砂纸打磨金属的目的：除去金属表面的氧化膜，使金属直接与溶液接触。</li>
+<li>结论表达要规范：金属活动性 A &gt; B &gt; C。</li>
+<li>注意对照实验设计：控制变量法——改变金属种类（保持溶液相同）或改变溶液种类（保持金属相同）。</li>
+<li>实验①或③其实不做也能得出 Al &gt; Cu &gt; Ag 的结论（由①②推知），但做③能直接验证。</li>
       </ul>
     </details>
 <details class="exp-block" open>
       <summary>安全提醒</summary>
       <ul class="block-list">
-        <li>金属边角锋利注意防割伤；实验后含重金属溶液按规定回收。</li>
+        <li>金属边角锋利注意防割伤。</li>
+<li>实验后含重金属（如 Ag+、Cu<sup>2+</sup>）的废液应按规定回收处理，不可倒入下水道。</li>
       </ul>
     </details>
             <details class="exp-block">
@@ -104,6 +136,10 @@
     </details>
           </section>
 
+          <div class="controls" style="margin-top: 1.25rem;">
+            <button id="markLearned" class="mark-learned-btn" type="button">标记为已学习</button>
+          </div>
+
           <div class="nav-prev-next">
             <a class="secondary-button" href="exp-13.html">← 实验十三、探究燃烧的条件</a>
             <a class="secondary-button" href="exp-15.html">实验十五、探究铁钉生锈的条件 →</a>
@@ -119,7 +155,7 @@
             <li>我能用 1 句话说出实验原理吗？</li>
             <li>我能按顺序写出关键操作步骤吗？（含先后顺序）</li>
             <li>我能写出 2 个现象 + 1 个结论吗？</li>
-            <li>我能说出 2 个误差来源/注意事项，并解释“为什么”吗？</li>
+            <li>我能说出 2 个误差来源/注意事项，并解释"为什么"吗？</li>
           </ul>
         </aside>
       </div>

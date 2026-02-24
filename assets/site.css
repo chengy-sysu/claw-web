@@ -175,6 +175,20 @@ nav {
   color: var(--text-gray);
 }
 
+.chem-eq sub,
+.chem-eq sup {
+  font-size: 0.8em;
+  line-height: 0;
+}
+
+.chem-eq sub {
+  vertical-align: sub;
+}
+
+.chem-eq sup {
+  vertical-align: super;
+}
+
 /* Cards / Grids */
 .grid {
   display: grid;

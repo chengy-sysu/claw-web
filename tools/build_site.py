@@ -50,6 +50,96 @@ class ExpPage:
 def _safe(s: str) -> str:
     return html.escape(s, quote=True)
 
+def _safe_chem_inline(text: str) -> str:
+    """
+    Escape text then render simple chemical formatting:
+      - subscripts: H2O -> H<sub>2</sub>O
+      - ionic charge: Mg2+ -> Mg<sup>2+</sup>, SO4^2- -> SO<sub>4</sub><sup>2-</sup>
+
+    Best-effort, aimed at short inline notes (not full LaTeX).
+    """
+    esc = _safe(text)
+    # caret charge (preferred): SO4^2-
+    esc = re.sub(r"([A-Za-z\)\]][A-Za-z0-9\(\)\[\]]*)\^(\d+)([+-])", r"\1<sup>\2\3</sup>", esc)
+    # terminal charge: Mg2+ (followed by end or a non-alphanumeric separator)
+    esc = re.sub(
+        r"([A-Za-z\)\]][A-Za-z0-9\(\)\[\]]*?)(\d+)([+-])(?=$|[^A-Za-z0-9])",
+        r"\1<sup>\2\3</sup>",
+        esc,
+    )
+    # subscripts in remaining formula text
+    esc = re.sub(r"(?<=[A-Za-z\)\]])(\d+)", r"<sub>\1</sub>", esc)
+    return esc
+
+
+def _chem_species_to_html(species: str) -> str:
+    """
+    Convert a chemical species token to HTML with subscripts/superscripts.
+    Supports:
+      - coefficients: 2H2O
+      - subscripts: H2SO4, Ca(OH)2
+      - ionic charges: Mg2+, SO4^2-
+      - simple parentheses wrappers: (MnO2)
+    """
+    s = species.strip()
+    if not s:
+        return ""
+
+    # Wrapper parentheses like "(MnO2)".
+    if s.startswith("(") and s.endswith(")") and len(s) >= 3:
+        inner = s[1:-1].strip()
+        return "(" + _chem_species_to_html(inner) + ")"
+
+    # Leading coefficient (e.g. 2H2O).
+    m = re.match(r"^(\d+)(.+)$", s)
+    coeff = ""
+    rest = s
+    if m:
+        coeff = m.group(1)
+        rest = m.group(2)
+
+    # Charge written as caret: SO4^2-
+    m = re.match(r"^(.*)\^(\d+)([+-])$", rest)
+    charge_html = ""
+    if m:
+        rest = m.group(1)
+        charge_html = f"<sup>{m.group(2)}{m.group(3)}</sup>"
+    else:
+        # Terminal charge: Ca2+, Cl-
+        m2 = re.match(r"^(.*?)(\d+)?([+-])$", rest)
+        if m2 and re.search(r"[A-Za-z]", rest):
+            base = m2.group(1)
+            num = m2.group(2) or ""
+            sign = m2.group(3)
+            if base:
+                rest = base
+                charge_html = f"<sup>{num}{sign}</sup>"
+
+    # Subscripts in the base formula.
+    base = _safe(rest)
+    base = re.sub(r"(?<=[A-Za-z\)\]])(\d+)", r"<sub>\1</sub>", base)
+
+    return _safe(coeff) + base + charge_html
+
+
+def _chem_equation_to_html(eq: str) -> str:
+    """
+    Convert an equation string into HTML with arrows and formatted species.
+    Expected input uses spaces around '+' and arrows, e.g. '4P + 5O2 -> 2P2O5'.
+    """
+    s = eq.strip()
+    if not s:
+        return ""
+    s = s.replace("<->", "⇌").replace("<=>", "⇌").replace("->", "→")
+    tokens = s.split()
+    out = []
+    for t in tokens:
+        if t in {"+", "→", "⇌", "=", "≈"}:
+            out.append(_safe(t))
+        else:
+            out.append(_chem_species_to_html(t))
+    return " ".join(out)
+
 
 def _normalize_title(title: str) -> str:
     return re.sub(r"\s+", " ", title).strip()
@@ -82,7 +172,8 @@ def _render_notes(page: ExpPage) -> str:
     if isinstance(equations, list) and equations:
         eq_items = [str(e).strip() for e in equations if str(e).strip()]
         if eq_items:
-            parts.append(_render_block("必背方程式", eq_items))
+            eq_html = [f'<span class="chem-eq">{_chem_equation_to_html(e)}</span>' for e in eq_items]
+            parts.append(_render_block_html("必背方程式", eq_html))
 
     title_map = {
         "principle": "核心原理",
@@ -123,7 +214,7 @@ def _render_pdf_extract(page: ExpPage) -> str:
 
     inner = []
     for label, items in ordered:
-        lis = "\n".join(f"<li>{_safe(t)}</li>" for t in items)
+        lis = "\n".join(f"<li>{_safe_chem_inline(t)}</li>" for t in items)
         inner.append(
             f"""<div class="card" style="background: rgba(15, 23, 42, 0.35);">
   <h3 style="margin-bottom: 0.5rem;">{_safe(label)}</h3>
@@ -143,7 +234,19 @@ def _render_pdf_extract(page: ExpPage) -> str:
 
 
 def _render_block(label: str, items: list[str]) -> str:
-    lis = "\n".join(f"<li>{_safe(t)}</li>" for t in items)
+    lis = "\n".join(f"<li>{_safe_chem_inline(t)}</li>" for t in items)
+    return f"""
+    <details class="exp-block" open>
+      <summary>{_safe(label)}</summary>
+      <ul class="block-list">
+        {lis}
+      </ul>
+    </details>
+    """.strip()
+
+
+def _render_block_html(label: str, items_html: list[str]) -> str:
+    lis = "\n".join(f"<li>{t}</li>" for t in items_html if t.strip())
     return f"""
     <details class="exp-block" open>
       <summary>{_safe(label)}</summary>
@@ -234,7 +337,7 @@ def _render_exp_page(page: ExpPage, prev_page: ExpPage | None, next_page: ExpPag
         <aside class="keybox">
           <h3>本页速览</h3>
           <p class="muted" style="margin-bottom: 0.75rem;">一句话抓住考点：</p>
-          <p style="margin-bottom: 1rem;">{_safe(short_tip)}</p>
+          <p style="margin-bottom: 1rem;">{_safe_chem_inline(short_tip)}</p>
           <h3>自测清单</h3>
           <ul>
             <li>我能用 1 句话说出实验原理吗？</li>
@@ -280,7 +383,7 @@ def _update_index_experiment_list(index_html: str, pages: list[ExpPage]) -> str:
     <img src="{_safe(cover_src)}" alt="{_safe(_normalize_title(p.title))} 实验装置图" loading="lazy">
   </div>
   <h3>{_safe(_normalize_title(p.title))}</h3>
-  <p>{_safe(tip)}</p>
+  <p>{_safe_chem_inline(tip)}</p>
 </a>'''
         )
     block = "\n".join(cards)
